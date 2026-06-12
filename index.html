@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEDPERIO PROTOCOLS — Manejo Periodontal em Diabetes e Doença Cardiovascular</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='55%25' font-size='48' text-anchor='middle' dominant-baseline='middle'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+    <meta name="description" content="MEDPERIO PROTOCOLS — Plataforma de protocolos clínicos baseados em consenso científico para o manejo periodontal de pacientes com Diabetes Mellitus e Doença Cardiovascular." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              medperio: {
+                "dark-navy": "#1A2B3C",
+                "steel-gray": "#4A5568",
+                white: "#FFFFFF",
+                ice: "#F7FAFC",
+                teal: "#0E7C86",
+                crimson: "#B91C1C",
+              },
+            },
+            fontFamily: {
+              inter: ["Inter", "system-ui", "sans-serif"],
+              lora: ["Lora", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ─── RESET & BASE ─────────────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; }
+
+      /* ─── SCROLL BEHAVIOUR ─────────────────────────────────────── */
+      html { scroll-behavior: smooth; }
+
+      /* ─── TAB PANELS ───────────────────────────────────────────── */
+      .tab-panel { display: block; }
+      .tab-panel[hidden] { display: none; }
+      .tab-panel.entering { animation: panelFadeIn 0.3s ease forwards; }
+      .inner-panel { display: block; }
+      .inner-panel[hidden] { display: none; }
+      .inner-tab-bar {
+        display: flex;
+        gap: 0.5rem;
+        border-bottom: 1px solid rgba(14, 20, 28, 0.08);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.15rem;
+      }
+      .inner-tab {
+        padding: 0.55rem 1rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: #4A5568;
+        border: none;
+        background: transparent;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        cursor: pointer;
+        transition: color 0.2s ease, border-color 0.2s ease;
+      }
+      .inner-tab.active {
+        color: #1A2B3C;
+        font-weight: 700;
+        border-bottom-color: #0E7C86;
+      }
+      @keyframes panelFadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ─── HEADER TRANSITIONS ───────────────────────────────────── */
+      #site-header {
+        transition: box-shadow 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+        background: rgba(255,255,255,0.90);
+        backdrop-filter: blur(8px);
+      }
+      #site-header > div {
+        transition: padding 0.3s ease, padding-top 0.3s ease, padding-bottom 0.3s ease;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+      #site-header.scrolled {
+        box-shadow: 0 4px 24px rgba(26,43,60,0.12);
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(10px);
+      }
+      #site-header.scrolled > div {
+        padding-top: 0.50rem;
+        padding-bottom: 0.50rem;
+      }
+      #site-header .logo-img {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      #site-header.scrolled .logo-img {
+        transform: scale(0.96);
+        opacity: 0.92;
+      }
+
+      /* ─── TAB NAV ──────────────────────────────────────────────── */
+      .tab-nav {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(180deg, #eef2f7 0%, #e8edf4 100%);
+        border-radius: 12px;
+        padding: 4px;
+        gap: 2px;
+        position: relative;
+        box-shadow: inset 0 1px 3px rgba(26,43,60,0.08);
+      }
+      .tab-nav-item {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 9px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: #4A5568;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.2s ease, background 0.2s ease;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        letter-spacing: 0.01em;
+      }
+      .tab-nav-item:hover { color: #1A2B3C; }
+      .tab-nav-item:not(.active):hover { background: rgba(255,255,255,0.45); }
+      .tab-nav-item .tab-icon {
+        font-size: 0.875rem;
+        transition: transform 0.2s ease;
+        display: inline-block;
+      }
+      .tab-nav-item:hover .tab-icon { transform: scale(1.15); }
+      @keyframes iconPop {
+        0%   { transform: scale(1); }
+        40%  { transform: scale(1.3) rotate(-6deg); }
+        100% { transform: scale(1) rotate(0deg); }
+      }
+      .tab-nav-item.active .tab-icon {
+        animation: iconPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      .tab-nav-item.active {
+        color: #0b6b74;
+        font-weight: 600;
+      }
+
+      /* sliding pill */
+      .tab-nav-pill {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        height: calc(100% - 8px);
+        background: #ffffff;
+        border-radius: 9px;
+        box-shadow:
+          0 1px 3px rgba(26,43,60,0.10),
+          0 4px 12px rgba(14,124,134,0.09),
+          inset 0 1px 0 rgba(255,255,255,1);
+        transition: transform 0.28s cubic-bezier(0.34,1.12,0.64,1), width 0.28s cubic-bezier(0.34,1.12,0.64,1);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ─── SECTION CARDS ────────────────────────────────────────── */
+      .section-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 2rem 2.25rem;
+        box-shadow: 0 1px 3px rgba(26,43,60,0.06), 0 4px 16px rgba(26,43,60,0.05);
+        border: 1px solid rgba(74,85,104,0.08);
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+        /* fade-up on scroll */
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      .section-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+      }
+      .section-card:hover {
+        box-shadow: 0 4px 24px rgba(26,43,60,0.10), 0 1px 3px rgba(26,43,60,0.06);
+        transform: translateY(-2px);
+      }
+
+      /* ─── SECTION NUMBERS ──────────────────────────────────────── */
+      .section-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #1A2B3C 0%, #0E7C86 100%);
+        color: white;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.85rem;
+        box-shadow: 0 2px 8px rgba(14,124,134,0.25);
+        float: left;
+        margin-right: 0.85rem;
+        margin-top: 0.15rem;
+        flex-shrink: 0;
+      }
+      .section-num--cv {
+        background: linear-gradient(135deg, #7B1A1A 0%, #B91C1C 100%);
+        box-shadow: 0 2px 8px rgba(185,28,28,0.25);
+      }
+
+      .section-h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1A2B3C;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        overflow: hidden; /* clearfix for floated .section-num */
+      }
+      .section-h2::after { content: ''; display: table; clear: both; }
+
+      /* ─── DOMAIN DIVIDERS ──────────────────────────────────────── */
+      .domain-divider {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .domain-divider.visible { opacity: 1; transform: translateY(0); }
+      .domain-dm,
+      .domain-cv,
+      .domain-tools {
+        background-size: 300% 300%;
+        animation: domainGradient 10s ease infinite;
+      }
+      .domain-dm {
+        background-image: linear-gradient(135deg, #1A2B3C 0%, #1e4060 60%, #0E7C86 100%);
+      }
+      .domain-cv {
+        background-image: linear-gradient(135deg, #1A2B3C 0%, #4a1a1a 60%, #B91C1C 100%);
+      }
+      .domain-tools {
+        background-image: linear-gradient(135deg, #1e2d40 0%, #1A3A3C 60%, #0E7C86 100%);
+      }
+      .domain-divider::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        pointer-events: none;
+      }
+      .domain-icon {
+        font-size: 2.5rem;
+        line-height: 1;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+      }
+      .domain-kicker {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 2px;
+      }
+      .domain-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        line-height: 1.2;
+      }
+      .domain-sub {
+        font-size: 0.8125rem;
+        color: rgba(255,255,255,0.72);
+        margin-top: 4px;
+      }
+      @keyframes domainGradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      /* ─── INFO BLOCKS ──────────────────────────────────────────── */
+      .info-block {
+        background: #F7FAFC;
+        border-radius: 14px;
+        padding: 1.25rem 1.375rem;
+        border: 1px solid rgba(74,85,104,0.1);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .info-block:hover {
+        border-color: rgba(14,124,134,0.25);
+        box-shadow: 0 2px 12px rgba(14,124,134,0.08);
+      }
+      .info-block--danger { border-left: 3px solid #B91C1C; }
+      .info-block--success { border-left: 3px solid #15803d; }
+
+      /* ─── TABLES ───────────────────────────────────────────────── */
+      .table-wrap { overflow-x: auto; border-radius: 12px; }
+      .data-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+      .data-table thead tr { background: #1A2B3C; }
+      .data-table thead th {
+        padding: 10px 14px;
+        text-align: left;
+        color: white;
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .data-table thead th:first-child { border-radius: 10px 0 0 0; }
+      .data-table thead th:last-child { border-radius: 0 10px 0 0; }
+      .data-table tbody tr {
+        border-bottom: 1px solid rgba(74,85,104,0.08);
+        transition: background 0.15s ease;
+      }
+      .data-table tbody tr:hover { background: rgba(14,124,134,0.04); }
+      .data-table tbody tr:last-child { border-bottom: none; }
+      .data-table td { padding: 10px 14px; color: #2d3748; vertical-align: top; line-height: 1.5; }
+      .data-table--compact td, .data-table--compact th { padding: 7px 10px; }
+      .cell-note { font-size: 0.7rem; color: #718096; }
+
+      /* ─── CALLOUTS ─────────────────────────────────────────────── */
+      .callout {
+        display: flex;
+        gap: 0.875rem;
+        padding: 1rem 1.25rem;
+        border-radius: 12px;
+        border: 1px solid transparent;
+      }
+      .callout--warning { background: #fffbeb; border-color: #fbbf24; }
+      .callout--danger  { background: #fef2f2; border-color: #fca5a5; }
+      .callout--success { background: #f0fdf4; border-color: #86efac; }
+      .callout--info    { background: #eff6ff; border-color: #93c5fd; }
+      .callout-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+      .callout-title { font-weight: 700; font-size: 0.875rem; margin-bottom: 3px; color: #1A2B3C; }
+
+      /* ─── EMERGENCY CARDS ──────────────────────────────────────── */
+      .emergency-card {
+        background: #fff;
+        border-radius: 14px;
+        border: 1px solid rgba(185,28,28,0.2);
+        padding: 1.25rem 1.375rem;
+        box-shadow: 0 2px 12px rgba(185,28,28,0.06);
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+      }
+      .emergency-card:hover {
+        box-shadow: 0 6px 24px rgba(185,28,28,0.12);
+        transform: translateY(-2px);
+      }
+      .emergency-head {
+        font-weight: 700;
+        font-size: 0.9375rem;
+        color: #B91C1C;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .emergency-tag {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        background: #fef2f2;
+        color: #B91C1C;
+        border: 1px solid #fca5a5;
+        border-radius: 999px;
+        padding: 2px 8px;
+        letter-spacing: 0.03em;
+      }
+      .danger-note {
+        margin-top: 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #B91C1C;
+        background: #fef2f2;
+        border-radius: 8px;
+        padding: 6px 10px;
+        border: 1px solid #fca5a5;
+      }
+
+      /* ─── TYPOGRAPHY ───────────────────────────────────────────── */
+      .lead { font-family: 'Lora', serif; color: #4A5568; line-height: 1.7; margin-top: 0.5rem; font-size: 0.9375rem; }
+      .block-title { font-weight: 700; font-size: 0.9375rem; color: #1A2B3C; margin-bottom: 0.5rem; }
+      .block-subtitle { font-weight: 600; font-size: 0.8125rem; color: #1A2B3C; margin-bottom: 4px; }
+      .footnote { font-size: 0.7rem; color: #718096; }
+
+      /* ─── LISTS ────────────────────────────────────────────────── */
+      ul.bullet { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px; }
+      ul.bullet li {
+        padding-left: 1.25rem;
+        position: relative;
+        font-size: 0.8125rem;
+        color: #4A5568;
+        line-height: 1.55;
+      }
+      ul.bullet li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: #0E7C86;
+        font-size: 0.75rem;
+        top: 1px;
+      }
+      ul.bullet li.sub { padding-left: 2rem; }
+      ul.bullet li.sub::before { content: '·'; color: #718096; }
+      ol.numbered { padding: 0; margin: 0; list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 5px; }
+      ol.numbered li {
+        counter-increment: steps;
+        padding-left: 1.75rem;
+        position: relative;
+        font-size: 0.8125rem;
+        color: #4A5568;
+        line-height: 1.55;
+      }
+      ol.numbered li::before {
+        content: counter(steps);
+        position: absolute;
+        left: 0;
+        width: 1.25rem;
+        height: 1.25rem;
+        background: #1A2B3C;
+        color: white;
+        border-radius: 50%;
+        font-size: 0.65rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 1px;
+      }
+      ol.numbered--steps li::before { background: linear-gradient(135deg, #1A2B3C, #0E7C86); }
+      ol.refs { padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; counter-reset: refs; }
+      ol.refs li {
+        counter-increment: refs;
+        padding-left: 2rem;
+        position: relative;
+        font-size: 0.78rem;
+        color: #4A5568;
+        line-height: 1.6;
+      }
+      ol.refs li::before {
+        content: counter(refs) '.';
+        position: absolute;
+        left: 0;
+        color: #0E7C86;
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+
+      /* ─── FLOW DIAGRAMS ────────────────────────────────────────── */
+      .flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+      .flow-step {
+        width: 100%;
+        max-width: 460px;
+        background: #F7FAFC;
+        border: 1px solid rgba(74,85,104,0.15);
+        border-radius: 12px;
+        padding: 12px 20px;
+        text-align: center;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: #1A2B3C;
+      }
+      .flow-start { background: #1A2B3C; color: white; font-weight: 700; border-color: #1A2B3C; }
+      .flow-success { background: #f0fdf4; border-color: #86efac; color: #166534; font-weight: 600; }
+      .flow-warning { background: #fffbeb; border-color: #fbbf24; color: #92400e; font-weight: 600; }
+      .flow-danger  { background: #fef2f2; border-color: #fca5a5; color: #991b1b; font-weight: 600; }
+      .flow-arrow { font-size: 1.25rem; color: #718096; line-height: 1; padding: 2px 0; }
+      .flow-decision {
+        width: 100%;
+        max-width: 460px;
+        background: white;
+        border: 2px solid #1A2B3C;
+        border-radius: 12px;
+        padding: 12px 20px;
+        text-align: center;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #1A2B3C;
+      }
+      .flow-branch {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        max-width: 560px;
+        padding: 8px 0;
+      }
+      .flow-yes, .flow-no { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+      .flow-label { font-size: 0.7rem; font-weight: 700; color: #718096; letter-spacing: 0.06em; }
+
+      /* ─── BADGES ───────────────────────────────────────────────── */
+      .risk-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .risk-green  { background: #d1fae5; color: #065f46; }
+      .risk-yellow { background: #fef9c3; color: #713f12; }
+      .risk-orange { background: #ffedd5; color: #9a3412; }
+      .risk-red    { background: #fee2e2; color: #991b1b; }
+      .risk-gray   { background: #f1f5f9; color: #475569; }
+
+      /* ─── DOCUMENT TEMPLATE ────────────────────────────────────── */
+      .document-template {
+        background: #fff;
+        border: 2px dashed rgba(74,85,104,0.2);
+        border-radius: 14px;
+        padding: 1.5rem 1.75rem;
+        font-size: 0.8125rem;
+        color: #374151;
+        line-height: 1.8;
+      }
+      .doc-title { font-weight: 800; font-size: 0.9rem; text-align: center; letter-spacing: 0.1em; margin-bottom: 1rem; color: #1A2B3C; }
+      .doc-section { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #1A2B3C; margin: 0.875rem 0 0.25rem; border-bottom: 1px solid rgba(74,85,104,0.15); padding-bottom: 3px; }
+
+      /* ─── IMAGES ───────────────────────────────────────────────── */
+      .img-figure { border-radius: 12px; overflow: hidden; border: 1px solid rgba(74,85,104,0.1); }
+      .img-figure img { width: 100%; display: block; transition: transform 0.35s ease; }
+      .img-figure:hover img { transform: scale(1.02); }
+      .img-figure figcaption { font-size: 0.7rem; color: #718096; padding: 6px 10px; background: #F7FAFC; text-align: center; }
+
+      /* ─── BACK TO TOP ──────────────────────────────────────────── */
+      #back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: #1A2B3C;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(26,43,60,0.25);
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+        z-index: 50;
+        pointer-events: none;
+      }
+      #back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      #back-to-top:hover { background: #0E7C86; }
+
+      /* ─── MOBILE MENU ──────────────────────────────────────────── */
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        border-top: 1px solid rgba(74,85,104,0.08);
+        padding: 0.5rem 1rem 1rem;
+        background: white;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu-link {
+        padding: 10px 12px;
+        color: #4A5568;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .mobile-menu-link:hover { background: #F7FAFC; color: #1A2B3C; }
+
+      /* ─── HERO ANIMATED GRADIENT ───────────────────────────────── */
+      @keyframes meshMove {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .hero-gradient {
+        background: linear-gradient(-45deg, #1A2B3C, #22384c, #0a4d54, #0E7C86, #1a5c65, #22384c);
+        background-size: 400% 400%;
+        animation: meshMove 12s ease infinite;
+      }
+
+      /* ─── QUICK STATS HOVER ────────────────────────────────────── */
+      .stat-card {
+        transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+        border: 1px solid rgba(74,85,104,0.1);
+      }
+      .stat-card:hover {
+        box-shadow: 0 6px 24px rgba(14,124,134,0.1);
+        transform: translateY(-3px);
+        border-color: rgba(14,124,134,0.2);
+      }
+
+      /* ─── FADE-UP ANIMATIONS ───────────────────────────────────── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .section-card.visible {
+        animation: fadeUp 0.5s ease forwards;
+      }
+
+      /* ─── RESPONSIVE ADJUSTMENTS ───────────────────────────────── */
+      @media (max-width: 1024px) {
+        .section-card { padding: 1.5rem; }
+      }
+      @media (max-width: 640px) {
+        .section-card { padding: 1.25rem 1rem; border-radius: 14px; }
+        .domain-divider { padding: 1rem 1.25rem; }
+        .domain-title { font-size: 1.2rem; }
+        .domain-icon { font-size: 1.75rem; }
+      }
+
+      /* ─── REDUCED MOTION ───────────────────────────────────────── */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        .hero-gradient { animation: none; }
+        .section-card { opacity: 1; transform: none; }
+        .domain-divider { opacity: 1; transform: none; }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-medperio-ice text-medperio-dark-navy font-inter text-base">
+
+    <!-- ══════════════════════════════════════════════════
+         HEADER (Sticky + shrink-on-scroll)
+    ══════════════════════════════════════════════════ -->
+    <header id="site-header" class="sticky top-0 z-40 border-b border-medperio-steel-gray/10 bg-medperio-white/95 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 sm:px-8 py-3 lg:px-12">
+
+        <!-- LOGO -->
+        <a href="#" data-panel="panel-inicio" class="flex items-center gap-3 sm:gap-4 hover:opacity-80 transition-opacity flex-shrink-0" role="button">
+          <img src="logo.png" alt="MedPerio Protocols Logo" class="logo-img h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-lg object-contain" />
+          <div class="flex flex-col gap-0.5">
+            <span class="font-inter text-xs sm:text-sm font-bold tracking-[0.08em] text-medperio-dark-navy uppercase">MEDPERIO</span>
+            <span class="font-inter text-[0.65rem] sm:text-xs font-light tracking-[0.06em] text-medperio-steel-gray">PROTOCOLS</span>
+          </div>
+        </a>
+
+        <!-- DESKTOP TAB NAVIGATION -->
+        <nav class="hidden lg:flex items-center" aria-label="Navegação principal">
+          <div class="tab-nav" id="tab-nav" role="tablist">
+            <!-- sliding pill — JS will size/position it -->
+            <div class="tab-nav-pill" id="tab-pill" aria-hidden="true"></div>
+
+            <a href="#" id="tab-inicio"         class="tab-nav-item active" data-tab data-panel="panel-inicio" role="tab" aria-controls="panel-inicio" aria-selected="true"><span class="tab-icon">🏠</span> Início</a>
+            <a href="#" id="tab-diabetes"       class="tab-nav-item"        data-tab data-panel="panel-diabetes" role="tab" aria-controls="panel-diabetes" aria-selected="false"><span class="tab-icon">🩸</span> Diabetes</a>
+            <a href="#" id="tab-cardiovascular" class="tab-nav-item"        data-tab data-panel="panel-cardiovascular" role="tab" aria-controls="panel-cardiovascular" aria-selected="false"><span class="tab-icon">❤️</span> Cardiovascular</a>
+            <a href="#" id="tab-ferramentas"    class="tab-nav-item"        data-tab data-panel="panel-ferramentas" role="tab" aria-controls="panel-ferramentas" aria-selected="false"><span class="tab-icon">🔀</span> Fluxogramas</a>
+          </div>
+        </nav>
+
+        <!-- MOBILE HAMBURGER -->
+        <button class="lg:hidden flex flex-col gap-1.5 items-center justify-center w-10 h-10" id="mobile-menu-toggle" aria-label="Abrir menu">
+          <span class="block h-0.5 w-6 bg-medperio-dark-navy transition-all"></span>
+          <span class="block h-0.5 w-5 bg-medperio-dark-navy transition-all"></span>
+          <span class="block h-0.5 w-6 bg-medperio-dark-navy transition-all"></span>
+        </button>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <nav id="mobile-menu" class="mobile-menu lg:hidden" aria-label="Menu mobile">
+        <a href="#" data-panel="panel-inicio" class="mobile-menu-link">🏠 Início</a>
+        <a href="#" data-panel="panel-diabetes" class="mobile-menu-link">🩸 Diabetes Mellitus</a>
+        <a href="#" data-panel="panel-cardiovascular" class="mobile-menu-link">❤️ Doença Cardiovascular</a>
+        <a href="#" data-panel="panel-ferramentas" class="mobile-menu-link">🔀 Fluxogramas</a>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-5 sm:px-8 py-10 lg:px-12 lg:py-14">
+
+      <!-- ══════════════════════════════════════════════════
+           HERO
+      ══════════════════════════════════════════════════ -->
+      <section id="panel-inicio" class="tab-panel space-y-8" role="tabpanel">
+        <div class="overflow-hidden rounded-3xl hero-gradient p-8 sm:p-12 shadow-xl">
+          <div class="grid gap-10 justify-center items-center">
+            <div class="mx-auto space-y-6 text-center text-white">
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 ring-1 ring-white/20">
+                ⚕ Medicina Periodontal · Protocolos Clínicos
+              </span>
+              <h1 class="font-inter text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1]">
+                Manejo periodontal em pacientes com condições sistêmicas
+              </h1>
+              <p class="max-w-2xl mx-auto font-lora text-base sm:text-lg leading-relaxed text-white/85">
+                Protocolos clínicos baseados em consenso científico (IDF/EFP, ADA, AHA, SBD, SBC) para o atendimento odontológico de pacientes com <strong class="text-white">Diabetes Mellitus</strong> e <strong class="text-white">Doença Cardiovascular</strong>. Triagem, condutas, profilaxia, emergências e ferramentas de uso clínico imediato.
+              </p>
+              <div class="flex flex-wrap justify-center gap-3 pt-2">
+                <a href="#" data-panel="panel-diabetes" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-medperio-dark-navy shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">🩸 Diabetes Mellitus</a>
+                <a href="#" data-panel="panel-cardiovascular" class="inline-flex items-center gap-2 rounded-xl bg-medperio-crimson px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">❤️ Doença Cardiovascular</a>
+                <a href="#" data-panel="panel-ferramentas" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-white/20">🔀 Fluxogramas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="stat-card rounded-2xl bg-white p-6 shadow-sm">
+            <p class="text-xs uppercase tracking-[0.16em] text-medperio-steel-gray">Base documental</p>
+            <p class="mt-2 text-lg font-bold text-medperio-dark-navy">IDF · EFP · ADA · AHA · SBD · SBC</p>
+          </div>
+          <div class="stat-card rounded-2xl bg-white p-6 shadow-sm">
+            <p class="text-xs uppercase tracking-[0.16em] text-medperio-steel-gray">Aplicação</p>
+            <p class="mt-2 text-lg font-bold text-medperio-dark-navy">Consultório odontológico</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           BLOCO I — DIABETES MELLITUS
+      ══════════════════════════════════════════════════ -->
+      <section id="panel-diabetes" class="tab-panel" role="tabpanel" hidden>
+        <div class="inner-tab-bar" role="tablist">
+          <button type="button" class="inner-tab active" data-inner-tab="dm-conteudo" role="tab" aria-selected="true">Protocolo</button>
+          <button type="button" class="inner-tab" data-inner-tab="dm-referencias" role="tab" aria-selected="false">📚 Referências</button>
+        </div>
+        <div id="dm-conteudo" class="inner-panel">
+          <div id="diabetes" class="domain-divider domain-dm mt-16">
+          <span class="domain-icon">🩸</span>
+          <div>
+            <p class="domain-kicker">Bloco I</p>
+          <h2 class="domain-title">Diabetes Mellitus</h2>
+          <p class="domain-sub">Relação bidirecional DM ↔ periodontite · avaliação, estratificação de risco, condutas e manutenção</p>
+        </div>
+      </div>
+
+      <!-- 1 -->
+      <section id="dm-relacao" class="section-card mt-10">
+        <span class="section-num">1</span>
+        <h2 class="section-h2">Relação Bidirecional: Diabetes Mellitus ↔ Periodontite</h2>
+        <p class="lead">Base do consenso — <strong>IDF/EFP (Sanz et al., 2018)</strong>: DM e periodontite são doenças crônicas não transmissíveis com relação bidirecional clinicamente relevante e biologicamente demonstrada.</p>
+        <div class="mt-7 grid gap-6 lg:grid-cols-2">
+          <div class="info-block info-block--danger">
+            <h3 class="block-title">🔴 DM → Piora da Periodontite</h3>
+            <ul class="bullet">
+              <li><strong>AGEs (produtos finais de glicação avançada):</strong> acumulam no periodonto → ativam receptores RAGE → amplificam a cascata inflamatória local com elevação de IL-1β, TNF-α e MMP.</li>
+              <li><strong>Disfunção leucocitária:</strong> neutrófilos com quimiotaxia e fagocitose comprometidas → resposta imune ineficaz contra o biofilme periodontopatogênico.</li>
+              <li><strong>Microangiopatia:</strong> comprometimento da microcirculação gengival → déficit nutricional e cicatricial do periodonto.</li>
+              <li><strong>Xerostomia:</strong> redução do fluxo salivar → menor IgA salivar, lisozima e mucinas → maior susceptibilidade bacteriana e colonização fúngica (<em>Candida</em> spp.).</li>
+            </ul>
+          </div>
+          <div class="info-block info-block--danger">
+            <h3 class="block-title">🔴 Periodontite → Piora do Controle Glicêmico</h3>
+            <ul class="bullet">
+              <li><strong>Inflamação sistêmica:</strong> elevação de TNF-α, IL-1β, IL-6 e PCR → indução de resistência insulínica periférica via inibição do receptor de insulina.</li>
+              <li><strong>Bacteremia periodontogênica:</strong> <em>P. gingivalis</em>, <em>T. forsythia</em> e <em>T. denticola</em> na circulação → resposta inflamatória sistêmica de fase aguda.</li>
+              <li><strong>Efeito do tratamento comprovado:</strong> a TPNC reduz a HbA1c em 0,27–0,48% em 3 meses (Sanz et al., 2018 – IDF/EFP) e até 0,6% em 12 meses com endpoint saudável (D'Aiuto et al., 2018).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section id="dm-avaliacao" class="section-card mt-10">
+        <span class="section-num">2</span>
+        <h2 class="section-h2">Avaliação do Paciente Diabético na Cadeira</h2>
+        <p class="lead">O CD ocupa posição estratégica no rastreamento e co-manejo do DM. A anamnese dirigida, a aferição de glicemia capilar e a interpretação de exames laboratoriais são competências essenciais (Sanz et al., 2018).</p>
+        <div class="mt-7 grid gap-6 lg:grid-cols-2">
+          <div class="info-block">
+            <h3 class="block-title">🗒️ Anamnese Dirigida — Perguntas-Chave</h3>
+            <ul class="bullet">
+              <li>Tipo de DM (1 ou 2) e tempo de diagnóstico.</li>
+              <li>Último valor de HbA1c e data do exame.</li>
+              <li>Medicações hipoglicemiantes: insulina, metformina, sulfonilureias, inibidores SGLT-2, agonistas GLP-1.</li>
+              <li>Frequência e gravidade de episódios hipoglicêmicos recentes.</li>
+              <li>Complicações sistêmicas: nefropatia, neuropatia, retinopatia, pé diabético.</li>
+              <li>Última refeição e medicação tomada no dia da consulta.</li>
+              <li>Histórico de infecções orais recorrentes, cicatrização lenta ou candidíase oral.</li>
+              <li>Médico responsável e contato para interconsulta.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">🔬 Glicosímetro — Aferição Capilar no Consultório</h3>
+            <figure class="img-figure">
+              <img src="img-glicosimetro.jpeg" alt="Aferição de glicemia capilar com glicosímetro portátil" loading="lazy" />
+              <figcaption>Aferição de glicemia capilar com glicosímetro portátil.</figcaption>
+            </figure>
+            <ul class="bullet mt-4">
+              <li>Punção na polpa digital (dedo anelar/médio) com lanceta estéril descartável.</li>
+              <li>Volume necessário: ~0,3–0,5 µL (glicosímetros modernos).</li>
+              <li>Aferir imediatamente antes do procedimento; paciente em repouso ≥ 5 min.</li>
+              <li>Registrar no prontuário: valor, horário e última refeição.</li>
+              <li>Descarte em coletor perfurocortante (lancetas + tiras).</li>
+              <li>Disponíveis no Brasil: Accu-Chek Performa (Roche), OneTouch Select Plus (LifeScan), FreeStyle Optium Neo (Abbott), G-Tech Free (GlucoBio).</li>
+            </ul>
+            <p class="footnote mt-4"><strong>Referência técnica:</strong> ABNT NBR ISO 15197:2013. Faixa de mensuração 20–600 mg/dL; precisão ±15 mg/dL (&lt;100 mg/dL) e ±15% (≥100 mg/dL).</p>
+          </div>
+        </div>
+        <div class="callout callout--warning mt-7">
+          <span class="callout-icon">⚠️</span>
+          <div>
+            <p class="callout-title">Papel de rastreamento do CD</p>
+            <p>O CD pode ser o primeiro profissional a identificar pacientes com glicemia elevada não diagnosticada. Sinais de alerta: candidíase oral recorrente, periodontite de progressão rápida, xerostomia sem causa aparente, cicatrização deficiente. Nesses casos, orientar exames laboratoriais e encaminhamento médico formal (ADA, 2025; Sanz et al., 2018).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="dm-criterios" class="section-card mt-10">
+        <span class="section-num">3</span>
+        <h2 class="section-h2">Métricas Laboratoriais e Critérios Diagnósticos</h2>
+        <p class="lead">Baseado nas <em>Standards of Care in Diabetes</em> 2025/2026 da American Diabetes Association (ADA) e na Diretriz Oficial da Sociedade Brasileira de Diabetes (SBD) 2022–2023.</p>
+        <h3 class="block-title mt-6">🧪 Critérios Diagnósticos — ADA 2025/2026</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Exame</th><th>Normal</th><th>Pré-Diabetes</th><th>Diabetes Mellitus</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Glicemia de Jejum (GJ)</strong><br><span class="cell-note">Mínimo 8h; água permitida</span></td><td>&lt;100 mg/dL</td><td>100–125 mg/dL</td><td>≥126 mg/dL*</td></tr>
+              <tr><td><strong>Glicemia 2h pós-TOTG 75g</strong></td><td>&lt;140 mg/dL</td><td>140–199 mg/dL (IGT)</td><td>≥200 mg/dL*</td></tr>
+              <tr><td><strong>HbA1c</strong><br><span class="cell-note">Não requer jejum; reflete 90–120 dias</span></td><td>&lt;5,7%</td><td>5,7–6,4% (39–47 mmol/mol)</td><td>≥6,5%* (≥48 mmol/mol)</td></tr>
+              <tr><td><strong>Glicemia casual + sintomas clássicos</strong></td><td>—</td><td>—</td><td>≥200 mg/dL + poliúria/polidipsia</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote mt-3">*Na ausência de hiperglicemia inequívoca, o diagnóstico requer dois resultados anormais (mesmo teste em duas ocasiões ou dois testes diferentes simultaneamente). (ADA, 2025)</p>
+        <h3 class="block-title mt-8">📋 Orientação do Paciente para os Exames Laboratoriais</h3>
+        <div class="mt-4 grid gap-6 lg:grid-cols-2">
+          <div class="info-block">
+            <h4 class="font-semibold text-medperio-dark-navy mb-2">Glicemia de Jejum / TOTG</h4>
+            <ul class="bullet">
+              <li>Jejum de 8 a 12 horas (água é permitida).</li>
+              <li>Manter medicações habituais, salvo orientação médica.</li>
+              <li>Evitar atividade física intensa nas 24h anteriores.</li>
+              <li>TOTG: ingerir solução de 75g de glicose em até 5 min e permanecer em repouso durante as 2h de coleta.</li>
+              <li>Informar ao laboratório uso de corticosteroides, diuréticos tiazídicos ou betabloqueadores (alteram a glicemia).</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h4 class="font-semibold text-medperio-dark-navy mb-2">HbA1c</h4>
+            <ul class="bullet">
+              <li>Não requer jejum — pode ser coletada em qualquer momento.</li>
+              <li>Informar anemias, hemoglobinopatias (traço falciforme, talassemia), uso de eritropoietina ou hemodiálise — podem subestimar o resultado.</li>
+              <li>O método deve ser certificado pelo NGSP (rastreável ao DCCT).</li>
+              <li>Periodicidade: a cada 3 meses em DM descompensado; a cada 6 meses em DM controlado.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="dm-exames" class="section-card mt-10">
+        <span class="section-num">4</span>
+        <h2 class="section-h2">Outros Exames Complementares Relevantes</h2>
+        <div class="table-wrap mt-5">
+          <table class="data-table">
+            <thead><tr><th>Exame</th><th>Valor de Referência</th><th>Relevância Periodontal / Clínica</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HbA1c</strong> (CD interpreta)</td><td>DM controlado: &lt;7%; Descompensado: ≥8%</td><td>Define risco para procedimentos cirúrgicos e prognóstico do tratamento periodontal.</td></tr>
+              <tr><td><strong>Glicemia capilar</strong> pré-atendimento</td><td>Seguro: 70–250 mg/dL</td><td>Triagem imediata de emergência glicêmica intraoperatória.</td></tr>
+              <tr><td><strong>Lipidograma</strong></td><td>LDL&lt;100 (DM); HDL&gt;40♂/50♀; TG&lt;150</td><td>Dislipidemia coexiste em ~70% do DM2; aumenta risco cardiovascular perioperatório.</td></tr>
+              <tr><td><strong>Creatinina + TFGe</strong></td><td>TFGe ≥60 mL/min/1,73m²</td><td>Nefropatia diabética contraindica AINEs (TFGe &lt;30) e metformina (TFGe &lt;30).</td></tr>
+              <tr><td><strong>Hemograma</strong></td><td>Plaquetas: 150–400 mil/mm³</td><td>Anemia interfere na HbA1c; leucopenia aumenta risco infeccioso pós-operatório.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section id="dm-risco" class="section-card mt-10">
+        <span class="section-num">5</span>
+        <h2 class="section-h2">Estratificação de Risco pelo Controle Glicêmico</h2>
+        <p class="lead">Classificação da conduta odontológica com base no valor de glicemia capilar, para orientar atendimento seguro e decisões sobre procedimentos eletivos.</p>
+        <div class="table-wrap mt-5">
+          <table class="data-table">
+            <thead><tr><th>Valor da Glicemia (mg/dL)</th><th>Classificação</th><th>Conduta Odontológica</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Abaixo de 70</strong></td><td>Hipoglicemia</td><td><strong>Não atender.</strong> Administrar carboidratos (regra dos 15g) e aguardar estabilização.</td></tr>
+              <tr><td><strong>70 a 180</strong></td><td>Alvo Terapêutico</td><td><strong>Seguro para procedimentos.</strong> Faixa ideal para raspagem e cirurgias menores.</td></tr>
+              <tr><td><strong>181 a 240</strong></td><td>Hiperglicemia Moderada</td><td><strong>Atender com cautela.</strong> Avaliar risco de infecção e considerar <strong>adiamento de cirurgias extensas.</strong></td></tr>
+              <tr><td><strong>Acima de 250</strong></td><td>Hiperglicemia Grave</td><td><strong>Risco de Cetoacidose.</strong> <strong>Adiar</strong> procedimentos eletivos e encaminhar para ajuste médico.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section id="dm-pre" class="section-card mt-10">
+        <span class="section-num">6</span>
+        <h2 class="section-h2">Considerações Pré-Procedimento</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-5">
+          <div class="info-block">
+            <h3 class="block-title">⏰ Agendamento (alimentação e medicação)</h3>
+            <ul class="bullet">
+              <li><strong>Horário ideal:</strong> manhã, logo após o desjejum — pico de cortisol endógeno reduz risco de hipoglicemia; glicemia mais estável.</li>
+              <li>Paciente deve ter se alimentado normalmente — evitar jejum prolongado pré-atendimento.</li>
+              <li>Paciente deve ter tomado as medicações habituais (insulina, antidiabéticos orais) antes da consulta.</li>
+              <li>Sessões mais curtas (45–60 min) para reduzir estresse e descarga catecolaminérgica.</li>
+              <li>Orientar trazer glicosímetro pessoal para automonitoramento pré/pós-procedimento.</li>
+              <li>Insulinoterapia intensiva e procedimentos longos: comunicar ao endocrinologista para possível ajuste de dose.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">💉 Anestésico Local e Vasoconstritor no DM</h3>
+            <div class="table-wrap">
+              <table class="data-table data-table--compact">
+                <thead><tr><th>Situação</th><th>1ª Escolha</th><th>Dose Máx.</th></tr></thead>
+                <tbody>
+                  <tr><td>DM controlado</td><td>Lidocaína 2% + Epinefrina 1:100.000</td><td>3 tubetes (0,054 mg epi)</td></tr>
+                  <tr><td>DM controlado (alternativa)</td><td>Prilocaína 3% + Felipressina 0,03 UI/mL</td><td>5 tubetes (0,27 UI)</td></tr>
+                  <tr><td>DM descompensado / cirurgia longa</td><td>Prilocaína + Felipressina (preferencial)</td><td>5 tubetes</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul class="bullet mt-4">
+              <li>Técnica aspirativa obrigatória antes de cada injeção.</li>
+              <li>Felipressina não possui ação adrenérgica, não altera glicemia, FC ou PA — preferencial no DM descompensado.</li>
+              <li>Anestesia sem vasoconstritor é mais perigosa: dor não controlada → liberação endógena de catecolaminas → hiperglicemia (Fabris et al., 2018).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="dm-profilaxia" class="section-card mt-10">
+        <span class="section-num">7</span>
+        <h2 class="section-h2">Profilaxia Antibiótica no Paciente Diabético — Quando Indicar?</h2>
+        <figure class="img-figure mt-6">
+          <img src="img-profilaxia-antibiotica.jpeg" alt="Tabela de profilaxia antibiótica: situação, profilaxia e esquema posológico" loading="lazy" />
+          <figcaption>Quadro-resumo de profilaxia antibiótica no paciente diabético.</figcaption>
+        </figure>
+        <div class="callout callout--warning mt-6">
+          <span class="callout-icon">⚠️</span>
+          <div>
+            <p class="callout-title">Interação metronidazol + sulfonilureias</p>
+            <p>O metronidazol inibe a CYP2C9 hepática responsável pelo metabolismo de glibenclamida, glipizida e glimepirida → risco de hipoglicemia intensa durante a antibioticoterapia. Substituir por amoxicilina + ácido clavulânico ou orientar monitoramento glicêmico intensivo (Fabris et al., 2018; UFPR, 2019).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section id="dm-emergencias" class="section-card mt-10">
+        <span class="section-num">8</span>
+        <h2 class="section-h2">Emergências Glicêmicas — Conduta</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-5">
+          <div class="emergency-card">
+            <div class="emergency-head">🚨 Hipoglicemia <span class="emergency-tag">Glicemia &lt;70 mg/dL</span></div>
+            <p class="block-subtitle">Sinais e sintomas</p>
+            <ul class="bullet"><li>Sudorese fria, tremores, palidez, taquicardia.</li><li>Ansiedade, confusão mental, cefaleia, náuseas.</li><li>Grave: inconsciência, convulsões, hipotermia.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>Interromper o procedimento imediatamente.</li><li>Consciente: 15–20g de CHO simples VO (suco de fruta 150mL, sachê de açúcar, gel de glicose).</li><li>Monitorar glicemia após 15 min; repetir se necessário.</li><li>Inconsciente: SAMU (192); manter vias aéreas.</li></ol>
+            <p class="danger-note">NÃO administrar insulina!</p>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-head">⚠️ Hiperglicemia <span class="emergency-tag">GJ &gt;126 / pós-prandial &gt;200 mg/dL</span></div>
+            <p class="block-subtitle">Sinais e sintomas</p>
+            <ul class="bullet"><li>Poliúria, polidipsia, xerostomia, fadiga.</li><li>Pele seca e quente, visão turva.</li><li>CAD: hálito cetônico, respiração de Kussmaul.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>Interromper o procedimento eletivo.</li><li>Posição supina; monitorar sinais vitais.</li><li>O₂ suplementar se disponível.</li><li>Acionar SAMU (192).</li></ol>
+            <p class="danger-note">NÃO administrar insulina!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section id="dm-terapia" class="section-card mt-10">
+        <span class="section-num">9</span>
+        <h2 class="section-h2">Terapia Periodontal</h2>
+        <div class="callout callout--success mt-4">
+          <span class="callout-icon">✅</span>
+          <div>
+            <p class="callout-title">Evidência de impacto</p>
+            <p>A TPNC reduz a HbA1c em 0,27–0,48% em 3 meses (Sanz et al., 2018 – IDF/EFP). Ensaio clínico randomizado visando endpoint saudável demonstrou redução de 0,6% na HbA1c em 12 meses (D'Aiuto et al., 2018). Revisão sistemática EFP (Graziani et al., 2018) confirma a associação epidemiológica bidirecional.</p>
+          </div>
+        </div>
+        <h3 class="block-title mt-7">Protocolo — Terapia Periodontal Não Cirúrgica (TPNC) em DM</h3>
+        <ol class="numbered numbered--steps mt-4">
+          <li><strong>Instrução de higiene oral individualizada:</strong> técnica de Bass modificada (2×/dia mínimo), fio dental/escova interdental diariamente, enxaguante com clorexidina 0,12% na fase ativa.</li>
+          <li><strong>Raspagem supragengival:</strong> remoção de cálculo com ultrassom (EMS, Satelec, Cavitron) e cureta universal. Controle supragengival é pré-requisito absoluto antes da RAR subgengival.</li>
+          <li><strong>Raspagem e alisamento radicular (RAR) subgengival:</strong> curetas Gracey específicas por sextante. Em periodontite generalizada estágios III/IV, considerar protocolo <em>full-mouth</em> SRP (24–48h) para minimizar reinfecção cruzada.</li>
+          <li><strong>Adjuvância antimicrobiana local:</strong> clorexidina chips 2,5mg (PerioChip) ou gel 1% subgengival em bolsas ≥5mm como adjuvante ao RAR.</li>
+          <li><strong>Adjuvância sistêmica (periodontite generalizada III/IV):</strong> doxiciclina 100mg/dia por 14 dias (antimicrobiana + modulação de MMPs) ou amoxicilina 500mg + metronidazol 400mg 3×/dia por 7 dias (atenção à interação com sulfonilureias).</li>
+          <li><strong>Reavaliação em 8–12 semanas:</strong> novo HbA1c, sondagem periodontal, índice de placa e avaliação radiográfica.</li>
+        </ol>
+        <h3 class="block-title mt-8">Fase Cirúrgica — Condições e Particularidades no DM</h3>
+        <p class="lead">Cirurgia periodontal eletiva reservada para <strong>HbA1c &lt;7% (DM controlado)</strong>, após reavaliação pós-TPNC com bolsas residuais ≥6mm e/ou defeitos ósseos tratáveis (Sanz et al., 2020 – EFP S3 Guideline).</p>
+        <ul class="bullet mt-3">
+          <li><strong>Técnicas preferidas em DM controlado:</strong> retalho de Widman modificado; ressecção óssea; RTG com membranas em defeitos angulares (HbA1c &lt;7%).</li>
+          <li><strong>Cuidados intraoperatórios:</strong> hemostasia rigorosa, técnica atraumática, sutura com mínima tensão; curativo periodontal (Coe-Pak) em procedimentos extensos.</li>
+          <li><strong>Profilaxia antibiótica perioperatória:</strong> indicada para cirurgias em DM sub-controlado/descompensado.</li>
+          <li><strong>RTG e enxertos em DM descompensado (HbA1c &gt;8%):</strong> comprometimento da angiogênese e do metabolismo ósseo → maior taxa de insucesso; adiar até controle glicêmico adequado (Da Silva et al., 2022).</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section id="dm-cicatrizacao" class="section-card mt-10">
+        <span class="section-num">10</span>
+        <h2 class="section-h2">Cicatrização e Pós-Operatório</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-5">
+          <div class="info-block">
+            <h3 class="block-title">🔬 Comprometimento da Cicatrização — Mecanismos</h3>
+            <ul class="bullet">
+              <li><strong>Redução da síntese de colágeno:</strong> hiperglicemia inibe fibroblastos → menor deposição de colágeno tipos I e III.</li>
+              <li><strong>Comprometimento angiogênico:</strong> redução de VEGF → neovascularização deficiente no leito cirúrgico.</li>
+              <li><strong>Disfunção fagocítica:</strong> macrófagos em estado M1 (pró-inflamatório) → fase de proliferação cicatricial comprometida.</li>
+              <li><strong>Maior suscetibilidade infecciosa pós-op:</strong> risco de infecção secundária e deiscência de sutura.</li>
+              <li><strong>Comprometimento ósseo:</strong> formação óssea diminuída e atraso na maturação do calo ósseo.</li>
+              <li><strong>Microangiopatia local:</strong> hipóxia tecidual relativa → ambiente desfavorável à regeneração.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">🧷 Cuidados Pós-Operatórios Específicos</h3>
+            <ol class="numbered">
+              <li><strong>Monitoramento glicêmico intensivo:</strong> o estresse cirúrgico eleva o cortisol → hiperglicemia reativa. Aferição frequente nas primeiras 48–72h.</li>
+              <li><strong>Antibioticoterapia estendida:</strong> em DM sub-controlado/descompensado, 7–10 dias (amoxicilina 500mg 8/8h ou cefalexina 500mg 6/6h).</li>
+              <li><strong>Sutura prolongada:</strong> considerar 10–14 dias (vs. 7) em DM descompensado.</li>
+              <li><strong>Curativo periodontal:</strong> Coe-Pak em cirurgias extensas — protege o coágulo.</li>
+              <li><strong>Retornos frequentes:</strong> 48–72h, 7 dias, 21–30 dias e 8–12 semanas.</li>
+              <li><strong>Comunicação com o médico:</strong> informar o endocrinologista sobre cirurgias extensas.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section id="dm-manutencao" class="section-card mt-10">
+        <span class="section-num">11</span>
+        <h2 class="section-h2">Periodontia de Suporte / Manutenção Periodontal</h2>
+        <div class="table-wrap mt-5">
+          <table class="data-table">
+            <thead><tr><th>Perfil do Paciente</th><th>Intervalo</th><th>O que realizar na manutenção</th></tr></thead>
+            <tbody>
+              <tr><td>DM controlado (HbA1c &lt;7%) + periodontite estabilizada</td><td><strong>A cada 6 meses</strong></td><td>Sondagem periodontal, RAR supragengival, instrução de higiene, solicitar HbA1c se &gt;6 meses sem exame.</td></tr>
+              <tr><td>DM sub-controlado (HbA1c 7–8%) ou periodontite residual</td><td><strong>A cada 3–4 meses</strong></td><td>Sondagem + RAR supra e subgengival, reavaliação de bolsas residuais, ajuste do plano.</td></tr>
+              <tr><td>DM descompensado (HbA1c &gt;8%) e/ou periodontite instável</td><td><strong>A cada 3 meses</strong></td><td>RAR subgengival, clorexidina gel local em bolsas ativas, reforço de higiene, comunicação com o médico.</td></tr>
+              <tr><td>Pós-cirurgia periodontal (primeiros 12 meses)</td><td><strong>A cada 2–3 meses</strong></td><td>Monitoramento da cicatrização, controle de recidiva, suporte intensivo de higiene.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--info mt-6">
+          <span class="callout-icon">💡</span>
+          <div>
+            <p>A manutenção periodontal é um <strong>componente terapêutico ativo</strong> — não apenas profilático. Em pacientes com DM, a manutenção regular sustenta a redução de HbA1c obtida com o tratamento periodontal inicial (Sanz et al., 2018; Herrera et al., 2022).</p>
+          </div>
+        </div>
+      </section>
+
+        </div>
+        <div id="dm-referencias" class="inner-panel" hidden>
+          <section id="referencias-dm" class="section-card mt-10">
+            <h2 class="section-h2">📚 Referências — Diabetes Mellitus</h2>
+            <ol class="refs mt-5">
+              <li>Sanz M, Ceriello A, Buysschaert M, Chapple I, Demmer RT, Graziani F, et al. Scientific evidence on the links between periodontal diseases and diabetes: Consensus report and guidelines of the joint workshop by the IDF and EFP. J Clin Periodontol. 2018;45(2):138–149. doi:10.1111/jcpe.12808.</li>
+              <li>American Diabetes Association. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2025. Diabetes Care. 2025;48(Suppl 1):S27–S49.</li>
+              <li>American Diabetes Association. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2026. Diabetes Care. 2026;49(Suppl 1):S27.</li>
+              <li>Graziani F, Gennai S, Solini A, Petrini M. A systematic review and meta-analysis of epidemiologic observational evidence on the effect of periodontitis on diabetes. J Clin Periodontol. 2018;45(2):167–187.</li>
+              <li>D'Aiuto F, Gkranias N, Bhowruth D, et al. Systemic effects of periodontitis treatment in patients with type 2 diabetes: a 12 month, single-centre, investigator-masked, randomised trial. Lancet Diabetes Endocrinol. 2018;6(12):954–965.</li>
+              <li>Sanz M, Herrera D, Kebschull M, et al. Treatment of stage I–III periodontitis: the EFP S3 level clinical practice guideline. J Clin Periodontol. 2020;47(Suppl 22):4–60.</li>
+              <li>Herrera D, Sanz M, Kebschull M, et al. Treatment of stage IV periodontitis: the EFP S3 level clinical practice guideline. J Clin Periodontol. 2022;49(Suppl 24):4–71.</li>
+              <li>Sociedade Brasileira de Diabetes. Diretriz Oficial da Sociedade Brasileira de Diabetes 2022–2023. São Paulo: SBD; 2023.</li>
+              <li>Dallaserra M, et al. Periodontal Treatment Protocol for Decompensated Diabetes Patients. Front Oral Health. 2021;2:666713.</li>
+              <li>Belizário LCG, et al. The Impact of Type 2 Diabetes Mellitus on Non-Surgical Periodontal Treatment. J Clin Med. 2024;13(19):5978.</li>
+              <li>Pena, Fernanda Alves. Slides Medicina Periodontal. 2026.</li>
+              <li>DIABETES FARMA. Monitor de glicemia: o que é, vantagens de usar e como escolher o melhor? 22 abr. 2025.</li>
+              <li>Da Silva ER, et al. Diabetes Mellitus e Suas Implicações na Osteointegração de Implantes Dentários. Arch Health Investig. 2022;11(1):113–117.</li>
+              <li>Fabris CJ, et al. Conhecimento dos cirurgiões dentistas sobre o uso de anestésicos locais em pacientes diabéticos, hipertensos e cardiopatas. J Oral Investig. 2018;7(2).</li>
+              <li>ABNT. NBR ISO 15197:2013 – Sistemas de monitoramento de glicose em sangue. Rio de Janeiro: ABNT; 2013.</li>
+            </ol>
+          </section>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           BLOCO II — DOENÇA CARDIOVASCULAR
+      ══════════════════════════════════════════════════ -->
+      <section id="panel-cardiovascular" class="tab-panel" role="tabpanel" aria-labelledby="tab-cardiovascular" hidden>
+        <div class="inner-tab-bar" role="tablist">
+          <button type="button" class="inner-tab active" data-inner-tab="cv-conteudo" role="tab" aria-selected="true">Protocolo</button>
+          <button type="button" class="inner-tab" data-inner-tab="cv-referencias" role="tab" aria-selected="false">📚 Referências</button>
+        </div>
+        <div id="cv-conteudo" class="inner-panel">
+      <div id="cardiovascular" class="domain-divider domain-cv mt-16">
+        <span class="domain-icon">❤️</span>
+        <div>
+          <p class="domain-kicker">Bloco II</p>
+          <h2 class="domain-title">Doença Cardiovascular</h2>
+          <p class="domain-sub">Periodontite ↔ DCV · endocardite infecciosa, hipertensão, vasoconstritores, interações e emergências</p>
+        </div>
+      </div>
+
+      <!-- CV 1 -->
+      <section id="cv-fundamentos" class="section-card mt-10">
+        <span class="section-num section-num--cv">1</span>
+        <h2 class="section-h2">Fundamentos: Periodontite ↔ Doença Cardiovascular</h2>
+        <p class="lead">Evidência consolidada pelo Consensus Report EFP/WHF (Sanz et al., 2020), pelo Consensus EFP/WONCA Europe (Herrera et al., 2023) e pelo Scientific Statement da AHA (Circulation, 2024): a periodontite está independentemente associada à DCVA, com aumento de risco de ~25% para eventos coronarianos maiores.</p>
+        <h3 class="block-title mt-6">🔬 Principais Vias Patobiológicas — Periodontite → DCV</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Mecanismo</th><th>Descrição</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Bacteremia periodontogênica</strong></td><td><em>P. gingivalis</em>, <em>T. forsythia</em> e <em>F. nucleatum</em> translocam para a circulação. <em>P. gingivalis</em> foi identificado em placas ateroscleróticas; invade células endoteliais e induz formação de células espumosas (Carra et al., 2023).</td></tr>
+              <tr><td><strong>Inflamação sistêmica crônica</strong></td><td>Elevação de IL-1β, TNF-α, IL-6 e PCR exacerbam a aterogênese. IL-6 induz síntese hepática de PCR — biomarcador de risco CV independente (AHA, 2024).</td></tr>
+              <tr><td><strong>Disfunção endotelial</strong></td><td>LPS bacteriano → upregulação de ICAM-1 e VCAM-1 → acúmulo de monócitos → formação de estrias lipídicas (evento precoce da aterogênese).</td></tr>
+              <tr><td><strong>Dislipoproteinemia</strong></td><td>Meta-análise (19 estudos): periodontite → LDL ↑, TG ↑, HDL ↓ por ação de mediadores inflamatórios (Frontiers in Immunology, 2024).</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--success mt-6">
+          <span class="callout-icon">✅</span>
+          <div>
+            <p class="callout-title">Impacto terapêutico</p>
+            <p>Ensaio clínico randomizado (Orlandi, D'Aiuto et al., European Heart Journal, 2025) demonstrou que o tratamento periodontal reduz a progressão da espessura íntima-média carotídea (CIMT) — marcador substituto de aterosclerose subclínica. A diretriz EFP S3 (2022) reconhece efeitos sistêmicos benéficos da terapia periodontal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV 2 -->
+      <section id="cv-endocardite" class="section-card mt-10">
+        <span class="section-num section-num--cv">2</span>
+        <h2 class="section-h2">Profilaxia da Endocardite Infecciosa (EI)</h2>
+        <p class="lead">Baseado nas recomendações da American Heart Association — Wilson et al., 2007 (referência vigente) com atualização crítica de 2021 (exclusão da clindamicina) e nas orientações da Sociedade Brasileira de Cardiologia (SBC).</p>
+        <div class="grid gap-6 lg:grid-cols-2 mt-6">
+          <div class="info-block info-block--danger">
+            <h3 class="block-title">❤️ Condições de ALTO RISCO — Com indicação de profilaxia</h3>
+            <ul class="bullet">
+              <li>Portadores de prótese cardíaca valvar (mecânica ou biológica).</li>
+              <li>Valvopatia corrigida com material protético.</li>
+              <li>Antecedente de endocardite infecciosa prévia.</li>
+              <li>Receptores de transplante cardíaco que desenvolveram valvopatia.</li>
+              <li>Cardiopatia congênita cianótica não corrigida (incluindo shunts e condutos paliativos).</li>
+              <li>Cardiopatia congênita corrigida com material protético (primeiros 6 meses ou defeito residual adjacente).</li>
+              <li>Valvopatias (leve, moderada ou grave) — segundo SBC/Sociedade Interamericana de Cardiologia.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">⚠️ NÃO indicam profilaxia</h3>
+            <ul class="bullet">
+              <li>Prolapso de valva mitral sem regurgitação significativa.</li>
+              <li>Doença arterial coronariana, stent coronariano.</li>
+              <li>Marca-passo, CDI.</li>
+              <li>Bypass coronariano (CABG).</li>
+              <li>HAS isolada. (AHA, 2007)</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="block-title mt-8">🦷 Procedimentos Odontológicos</h3>
+        <div class="grid gap-6 lg:grid-cols-2 mt-4">
+          <div class="info-block info-block--success">
+            <h4 class="font-semibold text-medperio-dark-navy mb-2">✅ INDICAM profilaxia (alto risco)</h4>
+            <ul class="bullet">
+              <li>Raspagem e alisamento radicular subgengival.</li>
+              <li>Cirurgias periodontais (retalho, regeneração, ressecção óssea).</li>
+              <li>Exodontias (simples ou complexas).</li>
+              <li>Cirurgias endodônticas apicais.</li>
+              <li>Colocação de implantes dentários.</li>
+              <li>Injeções anestésicas intraligamentares.</li>
+              <li>Biópsias de tecidos orais.</li>
+              <li>Sondagem periodontal em locais com sangramento ativo.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h4 class="font-semibold text-medperio-dark-navy mb-2">❌ NÃO indicam profilaxia</h4>
+            <ul class="bullet">
+              <li>Profilaxia supragengival (limpeza supragengival).</li>
+              <li>Radiografias odontológicas.</li>
+              <li>Colocação/ajuste de próteses e aparelhos removíveis.</li>
+              <li>Anestesia infiltrativa em tecido não infectado.</li>
+              <li>Perda de dentes decíduos.</li>
+              <li>Restaurações com matrix supragengival.</li>
+              <li>Sangramento oral por trauma em lábio/mucosa.</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="block-title mt-8">💊 Regimes Profiláticos — AHA 2007 / Atualização 2021</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Situação</th><th>Medicamento</th><th>Dose Adulto — 30 a 60 min antes</th><th>Dose Pediátrica</th></tr></thead>
+            <tbody>
+              <tr><td>Sem alergia à penicilina — VO</td><td>Amoxicilina</td><td>2 g VO (dose única)</td><td>50 mg/kg VO</td></tr>
+              <tr><td>Sem alergia — impossibilidade VO</td><td>Ampicilina ou Cefazolina</td><td>2 g IM/IV ou 1 g IM/IV</td><td>50 mg/kg IM/IV</td></tr>
+              <tr><td>Alergia à penicilina — VO (1ª escolha)</td><td>Cefalexina</td><td>2 g VO</td><td>50 mg/kg VO</td></tr>
+              <tr><td>Alergia à penicilina — VO (alternativa)</td><td>Azitromicina ou Claritromicina</td><td>500 mg VO</td><td>15 mg/kg VO</td></tr>
+              <tr><td>Alergia à penicilina — impossibilidade VO</td><td>Cefazolina ou Ceftriaxona</td><td>1 g IM/IV</td><td>50 mg/kg IM/IV</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--danger mt-6">
+          <span class="callout-icon">🚫</span>
+          <div>
+            <p class="callout-title">Atualização AHA 2021 — Clindamicina EXCLUÍDA</p>
+            <p>A clindamicina foi removida da lista de alternativas para profilaxia de EI em procedimentos odontológicos. Motivo: maior risco de <em>Clostridioides difficile</em> (colite pseudomembranosa potencialmente fatal). Para alérgicos: usar cefalexina (sem histórico de anafilaxia) ou azitromicina/claritromicina.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV 3 -->
+      <section id="cv-vasoconstritor" class="section-card mt-10">
+        <span class="section-num section-num--cv">3</span>
+        <h2 class="section-h2">Uso de Vasoconstritor em Cardiopatas</h2>
+        <div class="callout callout--info mt-4">
+          <span class="callout-icon">💡</span>
+          <div>
+            <p class="callout-title">Princípio fundamental</p>
+            <p>Anestesia eficaz com vasoconstritor em doses terapêuticas é mais segura do que anestesia sem vasoconstritor em cardiopatas. A dor não controlada leva à liberação endógena de catecolaminas em volumes supraterapêuticos, com maior repercussão cardiovascular do que o vasoconstritor em dose clínica.</p>
+          </div>
+        </div>
+        <h3 class="block-title mt-6">💉 Escolha do Anestésico Local por Situação Cardiovascular</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Situação Clínica</th><th>Primeira Escolha</th><th>Dose Máxima</th><th>Observações</th></tr></thead>
+            <tbody>
+              <tr><td>HAS controlada (Estágio 1–2)</td><td>Lidocaína 2% + Epinefrina 1:100.000 ou Prilocaína 3% + Felipressina</td><td>Epi: ≤2 tubetes (0,036 mg); Feli: ≤5 tubetes</td><td>Técnica aspirativa obrigatória. Injeção lenta. Monitorar FC e PA.</td></tr>
+              <tr><td>Cardiopatia / valvopatia controlada</td><td>Prilocaína 3% + Felipressina 0,03 UI/mL (preferencial)</td><td>≤5 tubetes (0,27 UI)</td><td>Felipressina: vasoconstritor não adrenérgico — menor repercussão CV. Evitar em gestantes.</td></tr>
+              <tr><td>Betabloqueadores não seletivos</td><td>Felipressina (preferencial)</td><td>≤5 tubetes</td><td>Betabloqueador não seletivo + epinefrina → hipertensão paradoxal.</td></tr>
+              <tr><td>Antidepressivos tricíclicos</td><td>Felipressina ou Articaína 4% + Epi 1:200.000</td><td>Epi: máx. 0,04 mg</td><td>Tricíclicos potencializam catecolaminas. Evitar noradrenalina.</td></tr>
+              <tr><td>HAS descontrolada (≥180/110 mmHg)</td><td>Mepivacaína 3% (sem vasoconstritor) — urgências apenas</td><td>3–4 tubetes</td><td>Anestesia de curta duração para dor aguda apenas. Adiar todo procedimento eletivo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--warning mt-6">
+          <span class="callout-icon">⚠️</span>
+          <div>
+            <p class="callout-title">Dose máxima de epinefrina para cardiopatas — Consenso</p>
+            <p><strong>0,04 mg de epinefrina por consulta</strong> (≈2 tubetes de lidocaína 2% + epinefrina 1:100.000 ou ≈4 tubetes de articaína 4% + epinefrina 1:200.000). Limite baseado no risco de efeito adrenérgico cardiovascular cumulativo (AHA; BVS APS, 2021; Fabris et al., 2018).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV 4 -->
+      <section id="cv-hipertensao" class="section-card mt-10">
+        <span class="section-num section-num--cv">4</span>
+        <h2 class="section-h2">Manejo do Paciente Hipertenso</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-5">
+          <div class="info-block">
+            <h3 class="block-title">📐 Classificação da PA — DBHA 2020 (SBH/SBC/SBN)</h3>
+            <div class="table-wrap">
+              <table class="data-table data-table--compact">
+                <thead><tr><th>Classificação</th><th>PAS (mmHg)</th><th>PAD (mmHg)</th></tr></thead>
+                <tbody>
+                  <tr><td>Ótima</td><td>&lt;120</td><td>&lt;80</td></tr>
+                  <tr><td>Normal</td><td>120–129</td><td>80–84</td></tr>
+                  <tr><td>Pré-HAS</td><td>130–139</td><td>85–89</td></tr>
+                  <tr><td>HAS Estágio 1</td><td>140–159</td><td>90–99</td></tr>
+                  <tr><td>HAS Estágio 2</td><td>160–179</td><td>100–109</td></tr>
+                  <tr><td>HAS Estágio 3</td><td>≥180</td><td>≥110</td></tr>
+                  <tr><td>HSI (sistólica isolada)</td><td>≥140</td><td>&lt;90</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="footnote mt-2">Barroso WKS et al. Arq Bras Cardiol. 2021;116(3):516–658.</p>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">🩺 Papel do CD no Rastreamento de HAS</h3>
+            <ul class="bullet">
+              <li>Aferir PA em <strong>TODA consulta</strong> — mandatório (DBHA 2020).</li>
+              <li>Duas aferições com intervalo de 2 min; paciente sentado em repouso ≥5 min; manguito no nível do coração.</li>
+              <li>Registrar no prontuário: PAS, PAD e FC.</li>
+              <li>Encaminhar ao médico: PA ≥140/90 em duas aferições na mesma consulta.</li>
+              <li>Orientar o paciente sobre o vínculo entre periodontite e HAS (EFP/WONCA, 2023).</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="block-title mt-8">📋 Protocolo de Atendimento por Nível Pressórico</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>PA Pré-Consulta</th><th>Conduta</th></tr></thead>
+            <tbody>
+              <tr><td><span class="risk-badge risk-green">≤140/90 mmHg</span></td><td>✅ Qualquer tratamento periodontal eletivo ou cirúrgico; prosseguir normalmente.</td></tr>
+              <tr><td><span class="risk-badge risk-yellow">140–159 / 90–99 — Estágio 1</span></td><td>⚠️ Eletivo possível com monitoramento. Controle de ansiedade. Encaminhar ao médico após a consulta.</td></tr>
+              <tr><td><span class="risk-badge risk-orange">160–179 / 100–109 — Estágio 2</span></td><td>⚠️ Urgências: proceder se PA ≤170/110 sem sinais de alerta. Eletivos: adiar e encaminhar ao médico.</td></tr>
+              <tr><td><span class="risk-badge risk-red">≥180/110 — Estágio 3</span></td><td>🚫 Adiar TODO eletivo. Urgências: apenas analgesia/antibiótico. Encaminhar ao médico imediatamente.</td></tr>
+              <tr><td><span class="risk-badge risk-red">≥180/120 + sintomas</span></td><td>🚨 Emergência hipertensiva. Interromper atendimento. SAMU 192. Monitorar sinais vitais.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout--danger mt-6">
+          <span class="callout-icon">🚨</span>
+          <div>
+            <p class="callout-title">Sinais de Emergência Hipertensiva</p>
+            <p>Dispneia súbita, dor torácica, déficit motor novo, turvação visual aguda, confusão mental, convulsão. Qualquer desses sinais com PA elevada = <strong>SAMU (192) imediatamente</strong> (DBHA 2020).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV 5 -->
+      <section id="cv-ansiedade" class="section-card mt-10">
+        <span class="section-num section-num--cv">5</span>
+        <h2 class="section-h2">Controle de Ansiedade e Estresse no Paciente Cardiopata</h2>
+        <div class="callout callout--info mt-4">
+          <span class="callout-icon">🧘</span>
+          <div>
+            <p>A ansiedade dental gera descarga simpático-adrenérgica com aumento de FC, PA e consumo de O₂ pelo miocárdio — podendo desencadear angina, arritmia ou IAM em pacientes com reserva coronariana comprometida.</p>
+          </div>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2 mt-6">
+          <div class="info-block">
+            <h3 class="block-title">Métodos Não Farmacológicos</h3>
+            <ul class="bullet">
+              <li>Comunicação empática e linguagem clara sobre o procedimento.</li>
+              <li>Sessões curtas (≤60 min); pausas frequentes se necessário.</li>
+              <li>Iatrossedação: voz calma, tom tranquilizador, contato verbal contínuo.</li>
+              <li>Musicoterapia durante o atendimento.</li>
+              <li>Anestesia eficaz antes de qualquer procedimento invasivo.</li>
+              <li>Agendar em horários de menor demanda (manhã de terça a quinta).</li>
+              <li>Posição confortável; evitar supino prolongado em insuficiência cardíaca.</li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">Métodos Farmacológicos — Sedação Consciente</h3>
+            <ul class="bullet">
+              <li><strong>Benzodiazepínicos VO (1ª escolha):</strong></li>
+              <li class="sub">Diazepam 5–10mg VO — 1h antes.</li>
+              <li class="sub">Lorazepam 1–2mg VO — 1–2h antes.</li>
+              <li class="sub">Midazolam 7,5–15mg VO — 30–60min antes (meia-vida curta).</li>
+              <li><strong>Óxido nitroso/oxigênio (N₂O/O₂):</strong> 30–50% N₂O; alto perfil de segurança CV; não afeta contratilidade miocárdica; início em 3–5 min; recuperação rápida (Lima et al., 2023).</li>
+            </ul>
+            <p class="footnote mt-3"><strong>⚠️</strong> Benzodiazepínicos potencializam anti-hipertensivos centrais (clonidina) → hipotensão ortostática. Monitorar PA após sedação.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV 6 -->
+      <section id="cv-interacoes" class="section-card mt-10">
+        <span class="section-num section-num--cv">6</span>
+        <h2 class="section-h2">Interações Medicamentosas e Protocolo de Emergência</h2>
+        <h3 class="block-title mt-2">💊 Medicamentos Cardiovasculares e Impacto no Tratamento Periodontal</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Classe / Medicamento</th><th>Manifestação Oral / Impacto</th><th>Conduta do CD</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Bloqueadores dos canais de cálcio (BCC)</strong><br><span class="cell-note">Nifedipino, Amlodipino, Verapamil</span></td><td>Hiperplasia gengival fibrosa (nifedipino: 30–50%; amlodipino: menor). Agravada por placa subgengival.</td><td>Controle rigoroso de placa + RAR. Gengivectomia se interfere em higiene/estética. Comunicar ao médico.</td></tr>
+              <tr><td><strong>Anticoagulante oral — Varfarina</strong></td><td>Risco de sangramento. Metronidazol + varfarina → ↑INR. AINEs + varfarina → risco hemorrágico.</td><td>Solicitar INR pré-cirúrgico. INR ≤3,5 = seguro para cirurgia oral. NÃO suspender sem médico.</td></tr>
+              <tr><td><strong>Anticoagulantes diretos (NOACs)</strong><br><span class="cell-note">Rivaroxabana, Apixabana, Dabigatrana</span></td><td>Sem monitoramento de INR. Meia-vida curta (8–15h). Risco hemorrágico em cirurgias maiores.</td><td>Cirurgias extensas: discutir "janela terapêutica" com cardiologista. Hemostasia local rigorosa.</td></tr>
+              <tr><td><strong>AAS antiagregante (75–300 mg/dia)</strong></td><td>Inibição irreversível da COX-1 → disfunção plaquetária. Prolongamento do tempo de sangramento.</td><td>NÃO suspender — risco trombótico &gt;&gt; risco de sangramento oral. Hemostasia local suficiente.</td></tr>
+              <tr><td><strong>IECAs</strong><br><span class="cell-note">Enalapril, Captopril, Lisinopril</span></td><td>Angioedema (0,1–0,5%). Tosse seca crônica (5–20%). Hipotensão ortostática.</td><td>Anamnese sobre angioedema prévio. Manter adrenalina 1:1.000 disponível. Levantar lentamente.</td></tr>
+              <tr><td><strong>AINEs odontológicos</strong><br><span class="cell-note">Ibuprofeno, Diclofenaco, Naproxeno</span></td><td>Antagonizam efeito anti-hipertensivo de diuréticos, IECA e BRA. Risco nefrotóxico.</td><td>Preferir paracetamol ou dipirona para analgesia em hipertensos. AINEs por no máximo 5–7 dias.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2 mt-7">
+          <div class="emergency-card">
+            <div class="emergency-head">🚨 Angina Estável <span class="emergency-tag">Cede em &lt;5 min</span></div>
+            <p class="block-subtitle">Sinais</p>
+            <ul class="bullet"><li>Dor/pressão retroesternal durante procedimento estressante.</li><li>Irradiação para braço esquerdo, mandíbula, dorso.</li><li>Diaforese leve, náuseas discretas.</li><li>Cede com repouso ou nitrato em &lt;5 min.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>Interromper o procedimento.</li><li>Sentar ou deitar confortavelmente.</li><li>Nitroglicerina SL 0,4 mg (se já usa e tem consigo).</li><li>Monitorar PA, FC, SpO₂.</li><li>Cede em &lt;5 min → reagendar; encaminhar ao médico.</li><li>Não cede → repetir (máx. 3×, a cada 5 min) + SAMU 192.</li></ol>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-head">🚨 IAM / SCA <span class="emergency-tag">Dor &gt;20 min</span></div>
+            <p class="block-subtitle">Sinais</p>
+            <ul class="bullet"><li>Dor torácica opressiva intensa (&gt;20 min).</li><li>Irradiação: braço esquerdo, pescoço, mandíbula.</li><li>Sudorese intensa, palidez, dispneia, náuseas.</li><li>Sensação de morte iminente; bradi/taquicardia, hipotensão.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>SAMU 192 imediatamente.</li><li>Deitar (30° ou confortável); afrouxar roupas.</li><li>O₂ 4–6 L/min via máscara se disponível.</li><li>AAS 300mg VO mastigável (se sem alergia e sem sangramento ativo).</li><li>Monitorar sinais vitais; preparar DEA.</li></ol>
+            <p class="danger-note">NÃO dar AINEs! NÃO dar nitroglicerina se PAS &lt;90 mmHg!</p>
+          </div>
+        </div>
+      </section>
+
+        </div>
+        <div id="cv-referencias" class="inner-panel" hidden>
+      <!-- CV References -->
+      <section id="referencias-cv" class="section-card mt-10">
+        <h2 class="section-h2">📚 Referências — Doença Cardiovascular</h2>
+        <ol class="refs mt-5">
+          <li>Sanz M, et al. Periodontitis and cardiovascular diseases: Consensus report. J Clin Periodontol. 2020;47(3):268–288.</li>
+          <li>Herrera D, et al. Association between periodontal diseases and cardiovascular diseases, diabetes and respiratory diseases: Consensus report EFP and WONCA Europe. J Clin Periodontol. 2023;50(6):819–841.</li>
+          <li>Barroso WKS, et al. Diretrizes Brasileiras de Hipertensão Arterial – 2020. Arq Bras Cardiol. 2021;116(3):516–658.</li>
+          <li>Orlandi M, et al. Periodontitis treatment and progression of carotid intima-media thickness: a randomized trial. Eur Heart J. 2025;ehaf555.</li>
+          <li>Wilson W, et al. Prevention of infective endocarditis: guidelines from the American Heart Association. Circulation. 2007;116(15):1736–1754.</li>
+          <li>American Heart Association. 2021 Update: Antibiotic Prophylaxis for Dental Procedures — Exclusion of Clindamycin. AHA Scientific Statements. 2021.</li>
+          <li>Herrera D, et al. Treatment of stage IV periodontitis: the EFP S3 level clinical practice guideline. J Clin Periodontol. 2022;49(Suppl 24):4–71.</li>
+          <li>Prefeitura de Jundiaí/SP. Protocolo de Atendimento Odontológico a Pacientes Cardiopatas. 2023.</li>
+          <li>TelessaúdeRS-UFRGS. Quais os limites seguros de pressão arterial para procedimentos odontológicos de urgência? Porto Alegre: UFRGS; 2023.</li>
+          <li>HU Revista – UFJF. Pacientes hipertensos e a anestesia local na Odontologia. 2010;36(1):69–75.</li>
+          <li>BVS Atenção Primária em Saúde. Qual anestésico injetável para pacientes hipertensos? BVS APS; 2021.</li>
+          <li>Fabris CJ, et al. Conhecimento dos CDs sobre uso de anestésicos locais em pacientes diabéticos, hipertensos e cardiopatas. J Oral Investig. 2018;7(2).</li>
+          <li>Lima RM, et al. O uso dos benzodiazepínicos e do óxido nitroso para sedação consciente. Braz J Implant Health Sci. 2023;5(3):1081–1093.</li>
+          <li>Carra MC, et al. Periodontitis and atherosclerotic cardiovascular disease. Periodontol 2000. 2023.</li>
+          <li>Sociedade Brasileira de Cardiologia. V Diretriz sobre Tratamento do IAM com Supradesnível do Segmento ST. Arq Bras Cardiol. 2015.</li>
+          <li>Nicolau JC, et al. Diretrizes SBC sobre Angina Instável e IAM sem Supradesnível do ST — 2021. Arq Bras Cardiol. 2021.</li>
+        </ol>
+      </section>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           BLOCO III — FERRAMENTAS PRÁTICAS
+      ══════════════════════════════════════════════════ -->
+      <section id="panel-ferramentas" class="tab-panel" role="tabpanel" aria-labelledby="tab-ferramentas" hidden>
+      <div id="ferramentas" class="domain-divider domain-tools mt-16">
+        <span class="domain-icon">🛠️</span>
+        <div>
+          <p class="domain-kicker">Bloco III</p>
+          <h2 class="domain-title">Fluxogramas Práticos de Uso Clínico</h2>
+          <p class="domain-sub">Fluxogramas de decisão, tabelas de consulta rápida, fichas, cartas de interconsulta e protocolos de emergência</p>
+        </div>
+      </div>
+
+      <!-- Fluxograma DM -->
+      <section id="fer-fluxo-dm" class="section-card mt-10">
+        <h2 class="section-h2">🔀 Fluxograma de Decisão — Paciente Diabético</h2>
+        <p class="lead">Qual conduta periodontal adotar?</p>
+        <div class="flow mt-6">
+          <div class="flow-step flow-start">Paciente DM na cadeira</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Aferir glicemia capilar</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-decision">Glicemia &gt;250 mg/dL?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-danger">Cancelar eletivo · Urgência + ATB · Encaminhamento médico</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO ↓</span></div>
+          </div>
+          <div class="flow-decision">HbA1c &lt;7,0%?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-success">TPNC + Cirurgia ✅ — Tratamento completo</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO ↓</span></div>
+          </div>
+          <div class="flow-decision">HbA1c 7,0–8,0%?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-warning">TPNC ✅ · Cirurgia ⚠️ — Otimizar controle</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO (HbA1c &gt;8%) ↓</span></div>
+          </div>
+          <div class="flow-decision">Infecção ativa?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-warning">Drenagem/ATB · TPNC básico + Encaminhamento médico</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO</span><div class="flow-step flow-danger">Adiar tudo · Encaminhamento ao endocrinologista (urgente)</div></div>
+          </div>
+        </div>
+        <p class="footnote mt-4">TPNC = Terapia Periodontal Não Cirúrgica. Ref.: Dallaserra et al., Front Oral Health 2021; Sanz et al., J Clin Periodontol 2018; ADA, 2025.</p>
+      </section>
+
+      <!-- Fluxograma CV -->
+      <section id="fer-fluxo-cv" class="section-card mt-10">
+        <h2 class="section-h2">🔀 Fluxograma de Decisão — Paciente Cardiovascular / Hipertenso</h2>
+        <p class="lead">Qual conduta adotar na consulta?</p>
+        <div class="flow mt-6">
+          <div class="flow-step flow-start">Paciente HAS / Cardiopata</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Aferir PA pré-consulta</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-decision">PA ≥180/120 + sintomas?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-danger">EMERGÊNCIA · SAMU 192 · Interromper tudo</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO ↓</span></div>
+          </div>
+          <div class="flow-decision">PA ≥180/110?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-danger">Adiar eletivos · ATB/analgesia apenas · Encam. médico</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO ↓</span></div>
+          </div>
+          <div class="flow-decision">Urgência com PA ≤170/110?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-warning">Proceder com cautela + monitoramento · Encam. após</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO (PA controlada) ↓</span></div>
+          </div>
+          <div class="flow-decision">Cardiopatia de alto risco para EI?</div>
+          <div class="flow-branch">
+            <div class="flow-yes"><span class="flow-label">SIM</span><div class="flow-step flow-warning">Profilaxia EI · Amox. 2g 1h antes + Monitoramento</div></div>
+            <div class="flow-no"><span class="flow-label">NÃO</span><div class="flow-step flow-success">Tratamento periodontal completo ✅</div></div>
+          </div>
+        </div>
+        <p class="footnote mt-4">Ref.: Barroso et al., DBHA-2020, Arq Bras Cardiol 2021; Wilson et al., AHA Circulation 2007; TelessaúdeRS-UFRGS, 2023.</p>
+      </section>
+
+      <!-- Consulta rápida -->
+      <section id="fer-consulta-rapida" class="section-card mt-10">
+        <h2 class="section-h2">📊 Tabelas de Consulta Rápida</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-5">
+          <div class="info-block">
+            <h3 class="block-title">Valor da Glicemia — Conduta Odontológica</h3>
+            <div class="table-wrap">
+              <table class="data-table data-table--compact">
+                <thead><tr><th>Glicemia (mg/dL)</th><th>Classificação</th><th>Conduta</th></tr></thead>
+                <tbody>
+                  <tr><td>Abaixo de 70</td><td>Hipoglicemia</td><td><strong>Não atender.</strong> 15g CHO VO.</td></tr>
+                  <tr><td>70 a 180</td><td>Alvo Terapêutico</td><td><strong>Seguro.</strong> Prosseguir.</td></tr>
+                  <tr><td>181 a 240</td><td>Hiperglicemia Moderada</td><td><strong>Cautela.</strong> Adiar cirurgias extensas.</td></tr>
+                  <tr><td>Acima de 250</td><td>Hiperglicemia Grave</td><td><strong>Adiar.</strong> Encaminhar ao médico.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="info-block">
+            <h3 class="block-title">INR + PA — Limiares de Segurança Cirúrgica</h3>
+            <div class="table-wrap">
+              <table class="data-table data-table--compact">
+                <thead><tr><th>INR</th><th>Decisão</th></tr></thead>
+                <tbody>
+                  <tr><td>0,8–1,2</td><td>Normal</td></tr>
+                  <tr><td>2,0–3,0</td><td>Terapêutico (anticoag.)</td></tr>
+                  <tr><td>≤3,5</td><td>Seguro — cirurgia oral</td></tr>
+                  <tr><td>3,5–4,0</td><td>Cautela — hemostasia rigorosa</td></tr>
+                  <tr><td>&gt;4,0</td><td>Adiar — comunicar médico</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-wrap mt-3">
+              <table class="data-table data-table--compact">
+                <thead><tr><th>PA pré-consulta</th><th>Eletivos</th></tr></thead>
+                <tbody>
+                  <tr><td>≤140/90</td><td>Prosseguir ✅</td></tr>
+                  <tr><td>140–159/90–99</td><td>OK c/ monitoramento ⚠️</td></tr>
+                  <tr><td>160–179/100–109</td><td>Adiar eletivos</td></tr>
+                  <tr><td>≥180/110</td><td>Adiar tudo 🚫</td></tr>
+                  <tr><td>≥180/120 + sint.</td><td>SAMU 192 🚨</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="block-title mt-8">💉 Vasoconstritores — Doses Máximas para Cardiopatas</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Vasoconstritor / Concentração</th><th>Tubetes Máx. (Cardiopata)</th><th>Epinefrina total (mg)</th><th>Observação</th></tr></thead>
+            <tbody>
+              <tr><td>Epinefrina 1:100.000 (Lidocaína 2%)</td><td>2 tubetes</td><td>0,036 mg</td><td>Padrão internacional para cardiopatas.</td></tr>
+              <tr><td>Epinefrina 1:200.000 (Articaína 4%)</td><td>3–4 tubetes</td><td>0,027–0,036 mg</td><td>Maior volume anestésico com menor carga adrenérgica.</td></tr>
+              <tr><td>Felipressina 0,03 UI/mL (Prilocaína 3%)</td><td>5 tubetes</td><td>0 (não adrenérgica)</td><td>Preferencial para cardiopatas; evitar em gestantes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="block-title mt-8">💊 Profilaxia de EI — Esquema Rápido</h3>
+        <div class="table-wrap mt-4">
+          <table class="data-table">
+            <thead><tr><th>Situação</th><th>Medicamento</th><th>Dose adulto (60 min antes)</th></tr></thead>
+            <tbody>
+              <tr><td>Sem alergia à penicilina</td><td>Amoxicilina</td><td>2 g VO — dose única</td></tr>
+              <tr><td>Alérgico (não anafilaxia)</td><td>Cefalexina</td><td>2 g VO</td></tr>
+              <tr><td>Alérgico grave (anafilaxia)</td><td>Azitromicina ou Claritromicina</td><td>500 mg VO</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="footnote mt-2">🚫 Clindamicina EXCLUÍDA (AHA 2021) — risco de <em>Clostridioides difficile</em> potencialmente fatal.</p>
+      </section>
+
+      <!-- Ficha de Anamnese -->
+      <section id="fer-anamnese" class="section-card mt-10">
+        <h2 class="section-h2">📝 Modelo de Ficha de Anamnese Sistêmica — DM / DCV</h2>
+        <div class="document-template mt-5">
+          <p class="doc-title">ANAMNESE SISTÊMICA DIRECIONADA — MEDICINA PERIODONTAL</p>
+          <p>Paciente: ___________________________&nbsp;&nbsp;&nbsp;&nbsp;Data: _________&nbsp;&nbsp;&nbsp;&nbsp;CD: _______________</p>
+          <p class="doc-section">I. DIABETES MELLITUS</p>
+          <p>( ) Sim&nbsp;&nbsp;( ) Não&nbsp;&nbsp;( ) Não sabe&nbsp;&nbsp;&nbsp;Tipo: ( ) DM1&nbsp;&nbsp;( ) DM2&nbsp;&nbsp;&nbsp;Diagnóstico há: _______ anos</p>
+          <p>Último HbA1c: _______%&nbsp;&nbsp;Data: _________&nbsp;&nbsp;&nbsp;Glicemia capilar hoje: _______ mg/dL&nbsp;&nbsp;Horário: _______</p>
+          <p>Medicações: ( ) Insulina&nbsp;&nbsp;( ) Metformina&nbsp;&nbsp;( ) Sulfonilureia&nbsp;&nbsp;( ) Inh. SGLT-2&nbsp;&nbsp;( ) GLP-1 agonista&nbsp;&nbsp;Outros: ___________</p>
+          <p>Hipoglicemias recentes: ( ) Sim&nbsp;&nbsp;( ) Não&nbsp;&nbsp;&nbsp;Complicações: ( ) Nefropatia&nbsp;&nbsp;( ) Neuropatia&nbsp;&nbsp;( ) Retinopatia&nbsp;&nbsp;( ) Pé diabético</p>
+          <p class="doc-section">II. HIPERTENSÃO ARTERIAL / DOENÇAS CARDIOVASCULARES</p>
+          <p>HAS: ( ) Sim&nbsp;&nbsp;( ) Não&nbsp;&nbsp;&nbsp;PA hoje: _______ / _______ mmHg&nbsp;&nbsp;&nbsp;FC: _______ bpm</p>
+          <p>Anti-hipertensivos: ( ) IECA&nbsp;&nbsp;( ) BRA&nbsp;&nbsp;( ) BCC&nbsp;&nbsp;( ) Betabloqueador&nbsp;&nbsp;( ) Diurético&nbsp;&nbsp;Qual: ___________</p>
+          <p>Cardiopatias: ( ) DAC/Angina&nbsp;&nbsp;( ) IAM prévio (data: _______)&nbsp;&nbsp;( ) Arritmia&nbsp;&nbsp;( ) IC&nbsp;&nbsp;( ) Valvopatia&nbsp;&nbsp;( ) Prótese valvar&nbsp;&nbsp;( ) EI prévia</p>
+          <p>Anticoagulação: ( ) Varfarina — INR: _______&nbsp;&nbsp;( ) NOAC (qual: _______)&nbsp;&nbsp;( ) AAS 75mg&nbsp;&nbsp;( ) AAS 300mg</p>
+          <p>Marca-passo/CDI: ( ) Sim&nbsp;&nbsp;( ) Não&nbsp;&nbsp;&nbsp;Cirurgia cardíaca: ( ) Sim (qual: _______)&nbsp;&nbsp;( ) Não</p>
+          <p class="doc-section">III. FATORES DE RISCO ADICIONAIS</p>
+          <p>Tabagismo: ( ) Nunca&nbsp;&nbsp;( ) Ex (parou há ___ anos)&nbsp;&nbsp;( ) Ativo (___ cig/dia)&nbsp;&nbsp;&nbsp;Álcool: ( ) Não&nbsp;&nbsp;( ) Moderado&nbsp;&nbsp;( ) Abusivo</p>
+          <p>Alergias medicamentosas: ( ) Não&nbsp;&nbsp;( ) Penicilina&nbsp;&nbsp;( ) AAS&nbsp;&nbsp;( ) Outros: ___________</p>
+          <p>Médico responsável: ___________________________&nbsp;&nbsp;&nbsp;Contato: _______________</p>
+          <p class="footnote mt-3">Baseado em: Sanz et al., J Clin Periodontol 2018 (IDF/EFP); Herrera et al., J Clin Periodontol 2023 (EFP/WONCA); DBHA 2020 (SBH/SBC/SBN).</p>
+        </div>
+      </section>
+
+      <!-- Carta de Interconsulta -->
+      <section id="fer-interconsulta" class="section-card mt-10">
+        <h2 class="section-h2">📬 Modelo de Carta de Interconsulta Médica</h2>
+        <div class="grid gap-6 lg:grid-cols-2 mt-8">
+          <figure class="img-figure">
+            <img src="img-carta-endocrinologista.jpeg" alt="Modelo de encaminhamento ao endocrinologista" loading="lazy" />
+            <figcaption>Modelo de encaminhamento ao endocrinologista (manejo glicêmico).</figcaption>
+          </figure>
+          <figure class="img-figure">
+            <img src="img-solicitacao-exames.jpeg" alt="Modelo de solicitação de exame laboratorial de rastreio" loading="lazy" />
+            <figcaption>Modelo de solicitação de exame laboratorial de rastreio.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Critérios de Encaminhamento -->
+      <section id="fer-encaminhamento" class="section-card mt-10">
+        <h2 class="section-h2">🚑 Critérios Objetivos de Encaminhamento ao Médico</h2>
+        <div class="table-wrap mt-5">
+          <table class="data-table">
+            <thead><tr><th>Achado no Consultório</th><th>Encaminhar para</th><th>Urgência</th></tr></thead>
+            <tbody>
+              <tr><td>HbA1c ≥6,5% sem diagnóstico prévio de DM</td><td>Clínico Geral ou Endocrinologista</td><td><span class="risk-badge risk-yellow">Eletivo (&lt;30 dias)</span></td></tr>
+              <tr><td>Glicemia capilar &gt;200 mg/dL em não-diabético</td><td>Clínico Geral — rastreamento DM</td><td><span class="risk-badge risk-yellow">Eletivo (&lt;30 dias)</span></td></tr>
+              <tr><td>PA ≥140/90 mmHg em duas aferições</td><td>Clínico Geral ou Cardiologista</td><td><span class="risk-badge risk-yellow">Eletivo (&lt;30 dias)</span></td></tr>
+              <tr><td>PA ≥160/100 mmHg</td><td>Clínico Geral ou Cardiologista</td><td><span class="risk-badge risk-orange">Prioritário (&lt;7 dias)</span></td></tr>
+              <tr><td>PA ≥180/110 mmHg (assintomático)</td><td>Clínico Geral — urgência hipertensiva</td><td><span class="risk-badge risk-red">Urgente (&lt;24h)</span></td></tr>
+              <tr><td>PA ≥180/120 mmHg + sintomas</td><td>SAMU 192 imediatamente</td><td><span class="risk-badge risk-red">Emergência 🚨</span></td></tr>
+              <tr><td>HbA1c &gt;9,0% — DM descompensado</td><td>Endocrinologista</td><td><span class="risk-badge risk-orange">Prioritário (&lt;7 dias)</span></td></tr>
+              <tr><td>Glicemia &gt;250 mg/dL no consultório</td><td>Endocrinologista ou UPA/Pronto-Socorro</td><td><span class="risk-badge risk-red">Urgente (&lt;24h)</span></td></tr>
+              <tr><td>Dúvida sobre indicação de profilaxia EI</td><td>Cardiologista — confirmação formal</td><td><span class="risk-badge risk-gray">Eletivo</span></td></tr>
+              <tr><td>INR &gt;4,0 em paciente anticoagulado</td><td>Hematologista ou Cardiologista</td><td><span class="risk-badge risk-orange">Prioritário</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Emergências -->
+      <section id="fer-emergencias" class="section-card mt-10">
+        <h2 class="section-h2">🚨 Quadro de Protocolos de Emergência</h2>
+        <p class="lead">Para impressão e afixação no consultório.</p>
+        <div class="grid gap-6 lg:grid-cols-3 mt-6">
+          <div class="emergency-card">
+            <div class="emergency-head">⚠️ Hipoglicemia <span class="emergency-tag">&lt;70 mg/dL</span></div>
+            <p class="block-subtitle">Sinais</p>
+            <ul class="bullet"><li>Sudorese fria, tremor, palidez.</li><li>Taquicardia, confusão, cefaleia.</li><li>Grave: inconsciência.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>Interromper procedimento.</li><li>15–20g CHO simples VO (suco, açúcar, gel de glicose).</li><li>Monitorar 15 min; repetir se necessário.</li><li>Inconsciente: SAMU 192.</li></ol>
+            <p class="danger-note">NÃO ADMINISTRAR INSULINA!</p>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-head">🚨 Crise Hipertensiva <span class="emergency-tag">≥180/120 + sint.</span></div>
+            <p class="block-subtitle">Sinais</p>
+            <ul class="bullet"><li>Cefaleia intensa, dispneia.</li><li>Dor torácica, déficit motor.</li><li>Confusão, turvação visual.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>Parar atendimento.</li><li>Posição confortável (sentado).</li><li>Monitorar PA e FC; O₂ se disponível.</li><li>Acionar SAMU 192.</li></ol>
+            <p class="danger-note">NÃO MEDICAR SEM PRESCRIÇÃO!</p>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-head">🚨 Dor Torácica / IAM <span class="emergency-tag">&gt;20 min</span></div>
+            <p class="block-subtitle">Sinais</p>
+            <ul class="bullet"><li>Dor com irradiação (braço esq., mandíbula).</li><li>Sudorese intensa, palidez, dispneia.</li><li>Sensação de morte iminente.</li></ul>
+            <p class="block-subtitle mt-3">Conduta</p>
+            <ol class="numbered"><li>SAMU 192 imediatamente.</li><li>Deitar; afrouxar roupas.</li><li>O₂ 4–6 L/min se disponível.</li><li>AAS 300mg VO mastigável (sem alergia/sangramento).</li><li>Preparar DEA.</li></ol>
+            <p class="danger-note">NÃO ADMINISTRAR AINEs!</p>
+          </div>
+        </div>
+        <div class="callout callout--info mt-6">
+          <span class="callout-icon">ℹ️</span>
+          <div>
+            <p>Este conteúdo destina-se exclusivamente a cirurgiões-dentistas, com fins acadêmicos e de orientação clínica baseada em evidências. Não substitui diretrizes clínicas locais, avaliação individualizada nem comunicação interprofissional com o médico assistente. Última revisão da literatura: junho de 2026.</p>
+          </div>
+        </div>
+      </section>
+      </section>
+    </main>
+
+    <!-- BACK TO TOP -->
+    <button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-medperio-steel-gray/10 bg-medperio-dark-navy mt-16">
+      <div class="mx-auto max-w-7xl px-6 sm:px-8 py-10">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-3">
+            <img src="logo.png" alt="MedPerio" class="h-10 w-10 rounded-lg object-contain" />
+            <div>
+              <p class="font-inter text-sm font-bold tracking-[0.08em] text-white uppercase">MEDPERIO PROTOCOLS</p>
+              <p class="font-inter text-xs text-white/60">Medicina Periodontal Baseada em Evidência</p>
+            </div>
+          </div>
+          <div class="text-xs text-white/60 sm:text-right">
+            <p>Plataforma acadêmica-profissional · © 2026 Todos os direitos reservados. | Desenvolvido por <a href="https://github.com/Luizguilherme110" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-white transition-colors underline">Luiz Guilherme Gomes</a></p>
+            <p class="mt-1">Diabetes Mellitus · Doença Cardiovascular · Fluxogramas Clínicos</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+    /* ══════════════════════════════════════════════════════════════
+       TAB SYSTEM — painéis + sliding pill
+    ══════════════════════════════════════════════════════════════ */
+    (function () {
+      const nav    = document.getElementById('tab-nav');
+      const pill   = document.getElementById('tab-pill');
+      const tabs   = Array.from(document.querySelectorAll('[data-tab]'));        // tabs do header (com pill)
+      const panels = Array.from(document.querySelectorAll('.tab-panel'));
+      const triggers = Array.from(document.querySelectorAll('[data-panel]'));    // todos os gatilhos (tabs + logo + hero + mobile)
+
+      if (!panels.length) return;
+
+      const PILL_TRANSITION =
+        'transform 0.28s cubic-bezier(0.34,1.12,0.64,1), width 0.28s cubic-bezier(0.34,1.12,0.64,1)';
+
+      function movePillTo(tabEl) {
+        if (!nav || !pill || !tabEl) return;
+        const navRect = nav.getBoundingClientRect();
+        const tabRect = tabEl.getBoundingClientRect();
+        pill.style.width = tabRect.width + 'px';
+        pill.style.transform = `translateX(${tabRect.left - navRect.left}px)`;
+      }
+
+      function activate(panelId, doScroll = true) {
+        const target = document.getElementById(panelId);
+        if (!target) return;
+
+        const current = panels.find(p => !p.hidden);
+        if (current === target) return;
+
+        // 1. Mostra/esconde painéis
+        panels.forEach(p => {
+          const on = p === target;
+          p.hidden = !on;
+          if (!on) p.classList.remove('entering');
+        });
+
+        // 2. Anima a entrada do painel alvo (força reflow)
+        target.classList.remove('entering');
+        void target.offsetHeight;
+        target.classList.add('entering');
+
+        // 3. Garante que os cards internos fiquem visíveis
+        target.querySelectorAll('.section-card, .domain-divider').forEach(c => c.classList.add('visible'));
+
+        // 4. Atualiza estado das tabs do header + pill
+        tabs.forEach(t => {
+          const on = t.dataset.panel === panelId;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        const activeTab = tabs.find(t => t.dataset.panel === panelId);
+        if (activeTab) movePillTo(activeTab);
+
+        // 5. Fecha menu mobile, se aberto
+        const mm = document.getElementById('mobile-menu');
+        if (mm) mm.classList.remove('open');
+
+        // 6. Garantir topo sem scroll animado, evita tremor do header
+        if (doScroll && window.scrollY !== 0) window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+
+      // Gatilhos de troca de painel (tabs, logo, botões do hero, menu mobile)
+      triggers.forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          activate(el.dataset.panel);
+        });
+      });
+
+      // Navegação por teclado entre as tabs do header (setas ← →)
+      if (nav) {
+        nav.addEventListener('keydown', (e) => {
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+          e.preventDefault();
+          const idx = Math.max(0, tabs.findIndex(t => t.classList.contains('active')));
+          const next = e.key === 'ArrowRight'
+            ? tabs[(idx + 1) % tabs.length]
+            : tabs[(idx - 1 + tabs.length) % tabs.length];
+          next.focus();
+          activate(next.dataset.panel);
+        });
+      }
+
+      // Init: posiciona o pill na tab ativa, sem animação
+      const firstTab = tabs.find(t => t.classList.contains('active')) || tabs[0];
+      requestAnimationFrame(() => {
+        if (pill) pill.style.transition = 'none';
+        movePillTo(firstTab);
+        requestAnimationFrame(() => {
+          if (pill) pill.style.transition = PILL_TRANSITION;
+        });
+      });
+
+      // Recalcula o pill no resize (RAF duplo p/ medir após o layout pintar)
+      window.addEventListener('resize', () => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          const active = tabs.find(t => t.classList.contains('active')) || tabs[0];
+          if (pill) pill.style.transition = 'none';
+          movePillTo(active);
+          requestAnimationFrame(() => {
+            if (pill) pill.style.transition = PILL_TRANSITION;
+          });
+        }));
+      });
+
+      /* ── Sub-abas internas (Protocolo / Referências) ── */
+      document.querySelectorAll('.inner-tab-bar').forEach(bar => {
+        const innerTabs = Array.from(bar.querySelectorAll('[data-inner-tab]'));
+        innerTabs.forEach(it => {
+          it.addEventListener('click', () => {
+            innerTabs.forEach(o => {
+              const panel = document.getElementById(o.dataset.innerTab);
+              const on = o === it;
+              o.classList.toggle('active', on);
+              o.setAttribute('aria-selected', on ? 'true' : 'false');
+              if (panel) panel.hidden = !on;
+            });
+          });
+        });
+      });
+    })();
+
+
+    /* ══════════════════════════════════════════════════════════════
+       HEADER — shrink on scroll
+    ══════════════════════════════════════════════════════════════ */
+    (function () {
+      const header = document.getElementById('site-header');
+      if (!header) return;
+
+      let lastState = false;
+      let ticking = false;
+
+      function updateHeader() {
+        const scrolled = window.scrollY > 80;
+        if (scrolled !== lastState) {
+          header.classList.toggle('scrolled', scrolled);
+          lastState = scrolled;
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION CARDS — fade-up on scroll
+    ══════════════════════════════════════════════════════════════ */
+    (function () {
+      const cards = document.querySelectorAll('.section-card, .domain-divider');
+      if (!cards.length) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.06 });
+
+      cards.forEach(card => io.observe(card));
+    })();
+
+
+    /* ══════════════════════════════════════════════════════════════
+       BACK TO TOP
+    ══════════════════════════════════════════════════════════════ */
+    (function () {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+
+    /* ══════════════════════════════════════════════════════════════
+       MOBILE MENU
+    ══════════════════════════════════════════════════════════════ */
+    (function () {
+      const toggle = document.getElementById('mobile-menu-toggle');
+      const menu   = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+      });
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => menu.classList.remove('open'));
+      });
+    })();
+    </script>
+  </body>
+</html>
