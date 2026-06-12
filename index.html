@@ -2,7 +2,9 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1A2B3C" />
+    <meta name="format-detection" content="telephone=no" />
     <title>MEDPERIO PROTOCOLS — Manejo Periodontal em Diabetes e Doença Cardiovascular</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='55%25' font-size='48' text-anchor='middle' dominant-baseline='middle'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
     <meta name="description" content="MEDPERIO PROTOCOLS — Plataforma de protocolos clínicos baseados em consenso científico para o manejo periodontal de pacientes com Diabetes Mellitus e Doença Cardiovascular." />
@@ -576,7 +578,7 @@
         padding: 0.5rem 1rem 1rem;
         background: white;
       }
-      .mobile-menu.open { display: flex; }
+      .mobile-menu.active { display: flex; }
       .mobile-menu-link {
         padding: 10px 12px;
         color: #4A5568;
@@ -650,7 +652,7 @@
 
         <!-- LOGO -->
         <a href="#" data-panel="panel-inicio" class="flex items-center gap-3 sm:gap-4 hover:opacity-80 transition-opacity flex-shrink-0" role="button">
-          <img src="logo.png" alt="MedPerio Protocols Logo" class="logo-img h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-lg object-contain" />
+          <img src="logo.png" alt="MedPerio Protocols Logo" width="112" height="112" class="logo-img h-14 w-14 sm:h-20 sm:w-20 md:h-28 md:w-28 rounded-lg object-contain" />
           <div class="flex flex-col gap-0.5">
             <span class="font-inter text-xs sm:text-sm font-bold tracking-[0.08em] text-medperio-dark-navy uppercase">MEDPERIO</span>
             <span class="font-inter text-[0.65rem] sm:text-xs font-light tracking-[0.06em] text-medperio-steel-gray">PROTOCOLS</span>
@@ -671,7 +673,7 @@
         </nav>
 
         <!-- MOBILE HAMBURGER -->
-        <button class="lg:hidden flex flex-col gap-1.5 items-center justify-center w-10 h-10" id="mobile-menu-toggle" aria-label="Abrir menu">
+        <button type="button" class="lg:hidden flex flex-col gap-1.5 items-center justify-center w-10 h-10" id="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
           <span class="block h-0.5 w-6 bg-medperio-dark-navy transition-all"></span>
           <span class="block h-0.5 w-5 bg-medperio-dark-navy transition-all"></span>
           <span class="block h-0.5 w-6 bg-medperio-dark-navy transition-all"></span>
@@ -793,7 +795,10 @@
           <div class="info-block">
             <h3 class="block-title">🔬 Glicosímetro — Aferição Capilar no Consultório</h3>
             <figure class="img-figure">
-              <img src="img-glicosimetro.jpeg" alt="Aferição de glicemia capilar com glicosímetro portátil" loading="lazy" />
+              <picture>
+                <source srcset="img-glicosimetro.webp" type="image/webp" />
+                <img src="img-glicosimetro.jpeg" alt="Aferição de glicemia capilar com glicosímetro portátil" loading="lazy" decoding="async" />
+              </picture>
               <figcaption>Aferição de glicemia capilar com glicosímetro portátil.</figcaption>
             </figure>
             <ul class="bullet mt-4">
@@ -936,7 +941,10 @@
         <span class="section-num">7</span>
         <h2 class="section-h2">Profilaxia Antibiótica no Paciente Diabético — Quando Indicar?</h2>
         <figure class="img-figure mt-6">
-          <img src="img-profilaxia-antibiotica.jpeg" alt="Tabela de profilaxia antibiótica: situação, profilaxia e esquema posológico" loading="lazy" />
+          <picture>
+            <source srcset="img-profilaxia-antibiotica.webp" type="image/webp" />
+            <img src="img-profilaxia-antibiotica.jpeg" alt="Tabela de profilaxia antibiótica: situação, profilaxia e esquema posológico" loading="lazy" decoding="async" />
+          </picture>
           <figcaption>Quadro-resumo de profilaxia antibiótica no paciente diabético.</figcaption>
         </figure>
         <div class="callout callout--warning mt-6">
@@ -1576,11 +1584,17 @@
         <h2 class="section-h2">📬 Modelo de Carta de Interconsulta Médica</h2>
         <div class="grid gap-6 lg:grid-cols-2 mt-8">
           <figure class="img-figure">
-            <img src="img-carta-endocrinologista.jpeg" alt="Modelo de encaminhamento ao endocrinologista" loading="lazy" />
+            <picture>
+              <source srcset="img-carta-endocrinologista.webp" type="image/webp" />
+              <img src="img-carta-endocrinologista.jpeg" alt="Modelo de encaminhamento ao endocrinologista" loading="lazy" decoding="async" />
+            </picture>
             <figcaption>Modelo de encaminhamento ao endocrinologista (manejo glicêmico).</figcaption>
           </figure>
           <figure class="img-figure">
-            <img src="img-solicitacao-exames.jpeg" alt="Modelo de solicitação de exame laboratorial de rastreio" loading="lazy" />
+            <picture>
+              <source srcset="img-solicitacao-exames.webp" type="image/webp" />
+              <img src="img-solicitacao-exames.jpeg" alt="Modelo de solicitação de exame laboratorial de rastreio" loading="lazy" decoding="async" />
+            </picture>
             <figcaption>Modelo de solicitação de exame laboratorial de rastreio.</figcaption>
           </figure>
         </div>
@@ -1727,7 +1741,7 @@
 
         // 5. Fecha menu mobile, se aberto
         const mm = document.getElementById('mobile-menu');
-        if (mm) mm.classList.remove('open');
+        if (mm) mm.classList.remove('active');
 
         // 6. Garantir topo sem scroll animado, evita tremor do header
         if (doScroll && window.scrollY !== 0) window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1869,12 +1883,12 @@
       if (!toggle || !menu) return;
 
       toggle.addEventListener('click', () => {
-        menu.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+        menu.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', menu.classList.contains('active'));
       });
 
       menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => menu.classList.remove('open'));
+        link.addEventListener('click', () => menu.classList.remove('active'));
       });
     })();
     </script>

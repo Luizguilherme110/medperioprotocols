@@ -442,12 +442,15 @@ select {
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Hide mobile menu on desktop */
-@media (min-width: 769px) {
+/* Hide mobile menu on desktop.
+   IMPORTANT: must match the Tailwind `lg` breakpoint (1024px) used by the
+   markup (`hidden lg:flex` desktop nav / `lg:hidden` hamburger). Using 769px
+   here created a dead zone (769–1023px) with no navigation at all. */
+@media (min-width: 1024px) {
   #mobile-menu {
     display: none !important;
   }
-  
+
   #mobile-menu-toggle {
     display: none !important;
   }
@@ -1206,4 +1209,68 @@ ol.refs li:last-child { border-bottom: none; }
 .info-block p,
 .document-template p,
 .emergency-card p { text-align: left; }
+
+/* ============================================
+   MOBILE OPTIMIZATION (no impact on desktop ≥1024px)
+   ============================================ */
+
+/* Prevent accidental horizontal scroll / page jiggle on phones.
+   Applied to html (the viewport scroll container) so position:sticky
+   on the header keeps working. */
+html {
+  overflow-x: hidden;
+}
+
+/* Long titles with arrows/symbols (↔, →) must wrap instead of overflowing */
+.domain-title,
+.section-h2,
+h1, h2, h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Respect users who ask for less motion (also saves battery on mobile):
+   stop the infinite gradient animation and heavy transitions. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch & readability refinements — phones and small tablets only */
+@media (max-width: 768px) {
+  /* Justified text creates ugly "rivers" of whitespace on narrow screens */
+  p,
+  .lead {
+    text-align: left;
+  }
+
+  /* Comfortable tap targets (≥44px) for the in-page tabs and menu links */
+  .mobile-menu-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .inner-tab {
+    min-height: 40px;
+  }
+
+  /* The animated domain gradient is costly on mobile GPUs — freeze it */
+  .domain-dm,
+  .domain-cv,
+  .domain-tools {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  /* Hint that wide tables scroll horizontally instead of clipping content */
+  .table-wrap {
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
