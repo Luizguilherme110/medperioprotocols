@@ -1215,10 +1215,11 @@ ol.refs li:last-child { border-bottom: none; }
    ============================================ */
 
 /* Prevent accidental horizontal scroll / page jiggle on phones.
-   Applied to html (the viewport scroll container) so position:sticky
-   on the header keeps working. */
-html {
-  overflow-x: hidden;
+   overflow-x:clip on body (NOT html) — unlike overflow:hidden it does NOT
+   create a scroll container, so position:fixed and position:sticky keep
+   working correctly on mobile browsers (iOS Safari, Chrome Android). */
+body {
+  overflow-x: clip;
 }
 
 /* Long titles with arrows/symbols (↔, →) must wrap instead of overflowing */
