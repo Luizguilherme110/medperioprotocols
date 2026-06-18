@@ -774,7 +774,7 @@
       <!-- 2 -->
       <section id="dm-avaliacao" class="section-card mt-10">
         <span class="section-num">2</span>
-        <h2 class="section-h2">Avaliação do Paciente Diabético na Cadeira</h2>
+        <h2 class="section-h2">Avaliação do Paciente com Diabetes na Cadeira</h2>
         <p class="lead">O CD ocupa posição estratégica no rastreamento e co-manejo do DM. A anamnese dirigida, a aferição de glicemia capilar e a interpretação de exames laboratoriais são competências essenciais (Sanz et al., 2018).</p>
         <div class="mt-7 grid gap-6 lg:grid-cols-2">
           <div class="info-block">
@@ -784,7 +784,7 @@
               <li>Último valor de HbA1c e data do exame.</li>
               <li>Medicações hipoglicemiantes: insulina, metformina, sulfonilureias, inibidores SGLT-2, agonistas GLP-1.</li>
               <li>Frequência e gravidade de episódios hipoglicêmicos recentes.</li>
-              <li>Complicações sistêmicas: nefropatia, neuropatia, retinopatia, pé diabético.</li>
+              <li>Complicações sistêmicas: nefropatia, neuropatia, retinopatia, pré diabético.</li>
               <li>Última refeição e medicação tomada no dia da consulta.</li>
               <li>Histórico de infecções orais recorrentes, cicatrização lenta ou candidíase oral.</li>
               <li>Médico responsável e contato para interconsulta.</li>
@@ -855,7 +855,7 @@
               <li>Não requer jejum — pode ser coletada em qualquer momento.</li>
               <li>Informar anemias, hemoglobinopatias (traço falciforme, talassemia), uso de eritropoietina ou hemodiálise — podem subestimar o resultado.</li>
               <li>O método deve ser certificado pelo NGSP (rastreável ao DCCT).</li>
-              <li>Periodicidade: a cada 3 meses em DM descompensado; a cada 6 meses em DM controlado.</li>
+              <li>Periodicidade: a cada 3 meses em DM fora da meta; a cada 6 meses em DM dentro da meta.</li>
             </ul>
           </div>
         </div>
@@ -869,7 +869,7 @@
           <table class="data-table">
             <thead><tr><th>Exame</th><th>Valor de Referência</th><th>Relevância Periodontal / Clínica</th></tr></thead>
             <tbody>
-              <tr><td><strong>HbA1c</strong> (CD interpreta)</td><td>DM controlado: &lt;7%; Descompensado: ≥8%</td><td>Define risco para procedimentos cirúrgicos e prognóstico do tratamento periodontal.</td></tr>
+              <tr><td><strong>HbA1c</strong> (CD interpreta)</td><td>DM dentro da meta: &lt;7%; Fora da meta: ≥8%</td><td>Define risco para procedimentos cirúrgicos e prognóstico do tratamento periodontal.</td></tr>
               <tr><td><strong>Glicemia capilar</strong> pré-atendimento</td><td>Seguro: 70–250 mg/dL</td><td>Triagem imediata de emergência glicêmica intraoperatória.</td></tr>
               <tr><td><strong>Lipidograma</strong></td><td>LDL&lt;100 (DM); HDL&gt;40♂/50♀; TG&lt;150</td><td>Dislipidemia coexiste em ~70% do DM2; aumenta risco cardiovascular perioperatório.</td></tr>
               <tr><td><strong>Creatinina + TFGe</strong></td><td>TFGe ≥60 mL/min/1,73m²</td><td>Nefropatia diabética contraindica AINEs (TFGe &lt;30) e metformina (TFGe &lt;30).</td></tr>
@@ -919,15 +919,15 @@
               <table class="data-table data-table--compact">
                 <thead><tr><th>Situação</th><th>1ª Escolha</th><th>Dose Máx.</th></tr></thead>
                 <tbody>
-                  <tr><td>DM controlado</td><td>Lidocaína 2% + Epinefrina 1:100.000</td><td>3 tubetes (0,054 mg epi)</td></tr>
-                  <tr><td>DM controlado (alternativa)</td><td>Prilocaína 3% + Felipressina 0,03 UI/mL</td><td>5 tubetes (0,27 UI)</td></tr>
-                  <tr><td>DM descompensado / cirurgia longa</td><td>Prilocaína + Felipressina (preferencial)</td><td>5 tubetes</td></tr>
+                  <tr><td>DM dentro da meta</td><td>Lidocaína 2% + Epinefrina 1:100.000</td><td>3 tubetes (0,054 mg epi)</td></tr>
+                  <tr><td>DM dentro da meta (alternativa)</td><td>Prilocaína 3% + Felipressina 0,03 UI/mL</td><td>5 tubetes (0,27 UI)</td></tr>
+                  <tr><td>DM fora da meta / cirurgia longa</td><td>Prilocaína + Felipressina (preferencial)</td><td>5 tubetes</td></tr>
                 </tbody>
               </table>
             </div>
             <ul class="bullet mt-4">
               <li>Técnica aspirativa obrigatória antes de cada injeção.</li>
-              <li>Felipressina não possui ação adrenérgica, não altera glicemia, FC ou PA — preferencial no DM descompensado.</li>
+              <li>Felipressina não possui ação adrenérgica, não altera glicemia, FC ou PA — preferencial no DM fora da meta.</li>
               <li>Anestesia sem vasoconstritor é mais perigosa: dor não controlada → liberação endógena de catecolaminas → hiperglicemia (Fabris et al., 2018).</li>
             </ul>
           </div>
@@ -937,14 +937,50 @@
       <!-- 7 -->
       <section id="dm-profilaxia" class="section-card mt-10">
         <span class="section-num">7</span>
-        <h2 class="section-h2">Profilaxia Antibiótica no Paciente Diabético — Quando Indicar?</h2>
-        <figure class="img-figure mt-6">
-          <picture>
-            <source srcset="img-profilaxia-antibiotica.webp" type="image/webp" />
-            <img src="img-profilaxia-antibiotica.jpeg" alt="Tabela de profilaxia antibiótica: situação, profilaxia e esquema posológico" loading="lazy" decoding="async" />
-          </picture>
-          <figcaption>Quadro-resumo de profilaxia antibiótica no paciente diabético.</figcaption>
-        </figure>
+        <h2 class="section-h2">Profilaxia Antibiótica no Paciente com Diabetes — Quando Indicar?</h2>
+        <div class="table-wrap mt-6">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Situação</th>
+                <th>Profilaxia</th>
+                <th>Esquema Posológico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DM dentro da meta (HbA1c &lt;7%) + TPNC de retina</td>
+                <td><span class="risk-badge risk-green">NÃO indicada</span></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>DM dentro da meta + cirurgia periodontal extensa ou implante</td>
+                <td><span class="risk-badge risk-blue">CONSIDERAR</span></td>
+                <td>Amoxicilina 2g VO 30min à 1h antes + 500mg 8/8h por 5–7 dias pós-op</td>
+              </tr>
+              <tr>
+                <td>DM sub-dentro da meta (HbA1c 7–9%) + cirurgia periodontal</td>
+                <td><span class="risk-badge risk-orange">INDICADA</span></td>
+                <td>Amoxicilina 500mg 8/8h por 7 dias (pré + pós-op)</td>
+              </tr>
+              <tr>
+                <td>DM fora da meta (HbA1c &gt;9%) + qualquer cirurgia</td>
+                <td><span class="risk-badge risk-red">FORTEMENTE indicada</span></td>
+                <td>Amoxicilina 500mg 8/8h por 7–10 dias ou Amox+Clavulanato 875/125mg 12/12h</td>
+              </tr>
+              <tr>
+                <td>Alergia à penicilina (não anafilaxia)</td>
+                <td>—</td>
+                <td>Cefalexina 2g VO 30min à 1h antes + 500mg 6/6h por 7 dias</td>
+              </tr>
+              <tr>
+                <td>Alergia grave à penicilina (anafilaxia)</td>
+                <td>—</td>
+                <td>Azitromicina 500mg VO 30min à 1h antes + 250mg/dia por 5 dias</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="callout callout--warning mt-6">
           <span class="callout-icon">⚠️</span>
           <div>
@@ -991,20 +1027,20 @@
         </div>
         <h3 class="block-title mt-7">Protocolo — Terapia Periodontal Não Cirúrgica (TPNC) em DM</h3>
         <ol class="numbered numbered--steps mt-4">
-          <li><strong>Instrução de higiene oral individualizada:</strong> técnica de Bass modificada (2×/dia mínimo), fio dental/escova interdental diariamente, enxaguante com clorexidina 0,12% na fase ativa.</li>
-          <li><strong>Raspagem supragengival:</strong> remoção de cálculo com ultrassom (EMS, Satelec, Cavitron) e cureta universal. Controle supragengival é pré-requisito absoluto antes da RAR subgengival.</li>
-          <li><strong>Raspagem e alisamento radicular (RAR) subgengival:</strong> curetas Gracey específicas por sextante. Em periodontite generalizada estágios III/IV, considerar protocolo <em>full-mouth</em> SRP (24–48h) para minimizar reinfecção cruzada.</li>
+          <li><strong>Instrução de higiene oral individualizada:</strong> técnica de Bass modificada, fio dental/escova interdental diariamente, enxaguante com clorexidina 0,12% na fase ativa.</li>
+          <li><strong>Raspagem supragengival:</strong> remoção de cálculo com ultrassom e cureta Gracey área-específica. Controle supragengival é pré-requisito absoluto antes da RAR subgengival.</li>
+          <li><strong>Raspagem e alisamento radicular (RAR) subgengival:</strong> curetas Gracey Mini-Five específicas por sextante. Em periodontite generalizada estágios III/IV, considerar realizar a raspagem subgengival por quadrantes ou sextantes.</li>
           <li><strong>Adjuvância antimicrobiana local:</strong> clorexidina chips 2,5mg (PerioChip) ou gel 1% subgengival em bolsas ≥5mm como adjuvante ao RAR.</li>
           <li><strong>Adjuvância sistêmica (periodontite generalizada III/IV):</strong> doxiciclina 100mg/dia por 14 dias (antimicrobiana + modulação de MMPs) ou amoxicilina 500mg + metronidazol 400mg 3×/dia por 7 dias (atenção à interação com sulfonilureias).</li>
           <li><strong>Reavaliação em 8–12 semanas:</strong> novo HbA1c, sondagem periodontal, índice de placa e avaliação radiográfica.</li>
         </ol>
         <h3 class="block-title mt-8">Fase Cirúrgica — Condições e Particularidades no DM</h3>
-        <p class="lead">Cirurgia periodontal eletiva reservada para <strong>HbA1c &lt;7% (DM controlado)</strong>, após reavaliação pós-TPNC com bolsas residuais ≥6mm e/ou defeitos ósseos tratáveis (Sanz et al., 2020 – EFP S3 Guideline).</p>
+        <p class="lead">Cirurgia periodontal eletiva reservada para <strong>HbA1c &lt;7% (DM dentro da meta)</strong>, após reavaliação pós-TPNC com bolsas residuais ≥6mm e/ou defeitos ósseos tratáveis (Sanz et al., 2020 – EFP S3 Guideline).</p>
         <ul class="bullet mt-3">
-          <li><strong>Técnicas preferidas em DM controlado:</strong> retalho de Widman modificado; ressecção óssea; RTG com membranas em defeitos angulares (HbA1c &lt;7%).</li>
-          <li><strong>Cuidados intraoperatórios:</strong> hemostasia rigorosa, técnica atraumática, sutura com mínima tensão; curativo periodontal (Coe-Pak) em procedimentos extensos.</li>
-          <li><strong>Profilaxia antibiótica perioperatória:</strong> indicada para cirurgias em DM sub-controlado/descompensado.</li>
-          <li><strong>RTG e enxertos em DM descompensado (HbA1c &gt;8%):</strong> comprometimento da angiogênese e do metabolismo ósseo → maior taxa de insucesso; adiar até controle glicêmico adequado (Da Silva et al., 2022).</li>
+          <li><strong>Técnicas preferidas em DM dentro da meta:</strong> retalho de Widman modificado; ressecção óssea; RTG com membranas em defeitos angulares (HbA1c &lt;7%).</li>
+          <li><strong>Cuidados intraoperatórios:</strong> hemostasia rigorosa, técnica atraumática, sutura com mínima tensão; curativo periodontal em procedimentos extensos.</li>
+          <li><strong>Profilaxia antibiótica perioperatória:</strong> indicada para cirurgias em DM dentro da meta/fora da meta.</li>
+          <li><strong>RTG e enxertos em DM fora da meta (HbA1c &gt;8%):</strong> comprometimento da angiogênese e do metabolismo ósseo → maior taxa de insucesso; adiar até controle glicêmico adequado (Da Silva et al., 2022).</li>
         </ul>
       </section>
 
@@ -1028,8 +1064,8 @@
             <h3 class="block-title">🧷 Cuidados Pós-Operatórios Específicos</h3>
             <ol class="numbered">
               <li><strong>Monitoramento glicêmico intensivo:</strong> o estresse cirúrgico eleva o cortisol → hiperglicemia reativa. Aferição frequente nas primeiras 48–72h.</li>
-              <li><strong>Antibioticoterapia estendida:</strong> em DM sub-controlado/descompensado, 7–10 dias (amoxicilina 500mg 8/8h ou cefalexina 500mg 6/6h).</li>
-              <li><strong>Sutura prolongada:</strong> considerar 10–14 dias (vs. 7) em DM descompensado.</li>
+              <li><strong>Antibioticoterapia estendida:</strong> em DM dentro da meta/fora da meta, 7–10 dias (amoxicilina 500mg 8/8h ou cefalexina 500mg 6/6h).</li>
+              <li><strong>Sutura prolongada:</strong> considerar 10–14 dias (vs. 7) em DM fora da meta.</li>
               <li><strong>Curativo periodontal:</strong> Coe-Pak em cirurgias extensas — protege o coágulo.</li>
               <li><strong>Retornos frequentes:</strong> 48–72h, 7 dias, 21–30 dias e 8–12 semanas.</li>
               <li><strong>Comunicação com o médico:</strong> informar o endocrinologista sobre cirurgias extensas.</li>
@@ -1046,9 +1082,9 @@
           <table class="data-table">
             <thead><tr><th>Perfil do Paciente</th><th>Intervalo</th><th>O que realizar na manutenção</th></tr></thead>
             <tbody>
-              <tr><td>DM controlado (HbA1c &lt;7%) + periodontite estabilizada</td><td><strong>A cada 6 meses</strong></td><td>Sondagem periodontal, RAR supragengival, instrução de higiene, solicitar HbA1c se &gt;6 meses sem exame.</td></tr>
-              <tr><td>DM sub-controlado (HbA1c 7–8%) ou periodontite residual</td><td><strong>A cada 3–4 meses</strong></td><td>Sondagem + RAR supra e subgengival, reavaliação de bolsas residuais, ajuste do plano.</td></tr>
-              <tr><td>DM descompensado (HbA1c &gt;8%) e/ou periodontite instável</td><td><strong>A cada 3 meses</strong></td><td>RAR subgengival, clorexidina gel local em bolsas ativas, reforço de higiene, comunicação com o médico.</td></tr>
+              <tr><td>DM dentro da meta (HbA1c &lt;7%) + periodontite estabilizada</td><td><strong>A cada 6 meses</strong></td><td>Sondagem periodontal, RAR supragengival, instrução de higiene, solicitar HbA1c se &gt;6 meses sem exame.</td></tr>
+              <tr><td>DM dentro da meta (HbA1c 7–8%) ou periodontite residual</td><td><strong>A cada 3–4 meses</strong></td><td>Sondagem + RAR supra e subgengival, reavaliação de bolsas residuais, ajuste do plano.</td></tr>
+              <tr><td>DM fora da meta (HbA1c &gt;8%) e/ou periodontite instável</td><td><strong>A cada 3 meses</strong></td><td>RAR subgengival, clorexidina gel local em bolsas ativas, reforço de higiene, comunicação com o médico.</td></tr>
               <tr><td>Pós-cirurgia periodontal (primeiros 12 meses)</td><td><strong>A cada 2–3 meses</strong></td><td>Monitoramento da cicatrização, controle de recidiva, suporte intensivo de higiene.</td></tr>
             </tbody>
           </table>
@@ -1572,7 +1608,7 @@
           <p class="doc-section">III. FATORES DE RISCO ADICIONAIS</p>
           <p>Tabagismo: ( ) Nunca&nbsp;&nbsp;( ) Ex (parou há ___ anos)&nbsp;&nbsp;( ) Ativo (___ cig/dia)&nbsp;&nbsp;&nbsp;Álcool: ( ) Não&nbsp;&nbsp;( ) Moderado&nbsp;&nbsp;( ) Abusivo</p>
           <p>Alergias medicamentosas: ( ) Não&nbsp;&nbsp;( ) Penicilina&nbsp;&nbsp;( ) AAS&nbsp;&nbsp;( ) Outros: ___________</p>
-          <p>Médico responsável: ___________________________&nbsp;&nbsp;&nbsp;Contato: _______________</p>
+          <p>Cirurgião-dentista responsável: ___________________________&nbsp;&nbsp;&nbsp;Contato: _______________</p>
           <p class="footnote mt-3">Baseado em: Sanz et al., J Clin Periodontol 2018 (IDF/EFP); Herrera et al., J Clin Periodontol 2023 (EFP/WONCA); DBHA 2020 (SBH/SBC/SBN).</p>
         </div>
       </section>
@@ -1581,20 +1617,35 @@
       <section id="fer-interconsulta" class="section-card mt-10">
         <h2 class="section-h2">📬 Modelo de Carta de Interconsulta Médica</h2>
         <div class="grid gap-6 lg:grid-cols-2 mt-8">
-          <figure class="img-figure">
-            <picture>
-              <source srcset="img-carta-endocrinologista.webp" type="image/webp" />
-              <img src="img-carta-endocrinologista.jpeg" alt="Modelo de encaminhamento ao endocrinologista" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Modelo de encaminhamento ao endocrinologista (manejo glicêmico).</figcaption>
-          </figure>
-          <figure class="img-figure">
-            <picture>
-              <source srcset="img-solicitacao-exames.webp" type="image/webp" />
-              <img src="img-solicitacao-exames.jpeg" alt="Modelo de solicitação de exame laboratorial de rastreio" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Modelo de solicitação de exame laboratorial de rastreio.</figcaption>
-          </figure>
+          <div class="carta-modelo">
+            <h3 class="carta-titulo">Modelo de Encaminhamento ao Endocrinologista</h3>
+            <p><strong>De:</strong> Dr(a). [Seu Nome] – Cirurgião-Dentista (CRO: [Seu Número]) <strong>Para:</strong> Dr(a). [Nome do Endocrinologista/ Médico de Família]</p>
+            <p><strong>Assunto: Planejamento Terapêutico e Manejo Glicêmico</strong></p>
+            <p>Prezado(a) Colega,</p>
+            <p>Encaminho o(a) paciente <strong>[Nome do Paciente]</strong>, sob seus cuidados para controle de Diabetes Mellitus, que será submetido(a) a procedimento cirúrgico odontológico de <span class="carta-destaque">[especificar o porte da cirurgia, ex: exodontias múltiplas / instalação de implantes / cirurgia periodontal avançada]</span> no dia <strong>[Data]</strong>.</p>
+            <p>Devido à complexidade do procedimento e à necessidade de controle do edema e da resposta inflamatória pós-operatória, planejo a prescrição de corticosteroide por via oral. A posologia sugerida é:</p>
+            <ul>
+              <li><strong>Medicamento:</strong> <span class="carta-destaque">Dexametasona 4mg ou Betametasona 4mg;</span></li>
+              <li><strong>Protocolo:</strong> <span class="carta-destaque">Dose única pré-operatória (1 hora antes do procedimento).</span></li>
+            </ul>
+            <p>Estou ciente do potencial impacto dos corticosteroides na homeostase glicêmica. Dessa forma, solicito sua análise quanto à viabilidade desta prescrição ou recomendações de ajuste no esquema terapêutico do paciente (insulina/hipoglicemiantes) para o dia do procedimento.</p>
+            <p>Informo ainda que, conforme avaliação clínica, o paciente <span class="carta-destaque">apresenta [mencionar diagnóstico, ex: Periodontite Estágio III]</span>, condição que, por si só, contribui para a carga inflamatória sistêmica e resistência insulínica, justificando nosso cuidado redobrado no manejo inflamatório.</p>
+            <p>Coloco-me à disposição para discutir o caso.</p>
+            <p class="carta-fechamento">Atenciosamente,<span>[Cidade - UF], [Data de hoje].</span></p>
+            <p class="carta-assinatura">Assinatura e Carimbo<br>telefone de contato - (Nome do Profissional e Número do Conselho – CRO)</p>
+          </div>
+          <div class="carta-modelo">
+            <h3 class="carta-titulo">Investigar <span style="font-weight:400;font-size:0.9em;">(modelo de <mark style="background:#ffe066;color:#000;padding:0 2px;">solicitação de exame laboratorial</mark> de rastreio ao risco de diabetes e inflamação sistêmica de baixo grau)</span></h3>
+            <p><strong>Paciente:</strong> [Nome Completo do Paciente]</p>
+            <p>Solicito os seguintes exames complementares:</p>
+            <ol>
+              <li><strong>Glicemia de Jejum</strong> (Jejum de 8 a 12 horas);</li>
+              <li><strong>Hemoglobina Glicada (HbA1c)</strong> (Método de HPLC ou equivalente);</li>
+              <li><strong>Dosagem sérica de Proteína C reativa ultrassensível (PCR-us)</strong></li>
+            </ol>
+            <p><strong>Hipótese Diagnóstica / Justificativa:</strong> Rastreio de rotina para Diabetes Mellitus e inflamação sistêmica de baixo grau. Diagnóstico de <span class="carta-destaque"><strong>Periodontite</strong></span>, diante da correlação entre a inflamação periodontal a resistência insulínica justifica-se o rastreio preventivo. (CID-10: Z13.1 - Exame de rastreamento para diabetes mellitus) (Z13.9 – rastreamento não especificado) (K05 – periodontite).</p>
+            <p class="carta-assinatura">Assinatura e Carimbo<br>telefone de contato / (Nome do Profissional e Número do Conselho – CRO)</p>
+          </div>
         </div>
       </section>
 
@@ -1611,7 +1662,7 @@
               <tr><td>PA ≥160/100 mmHg</td><td>Clínico Geral ou Cardiologista</td><td><span class="risk-badge risk-orange">Prioritário (&lt;7 dias)</span></td></tr>
               <tr><td>PA ≥180/110 mmHg (assintomático)</td><td>Clínico Geral — urgência hipertensiva</td><td><span class="risk-badge risk-red">Urgente (&lt;24h)</span></td></tr>
               <tr><td>PA ≥180/120 mmHg + sintomas</td><td>SAMU 192 imediatamente</td><td><span class="risk-badge risk-red">Emergência 🚨</span></td></tr>
-              <tr><td>HbA1c &gt;9,0% — DM descompensado</td><td>Endocrinologista</td><td><span class="risk-badge risk-orange">Prioritário (&lt;7 dias)</span></td></tr>
+              <tr><td>HbA1c &gt;9,0% — DM fora da meta</td><td>Endocrinologista</td><td><span class="risk-badge risk-orange">Prioritário (&lt;7 dias)</span></td></tr>
               <tr><td>Glicemia &gt;250 mg/dL no consultório</td><td>Endocrinologista ou UPA/Pronto-Socorro</td><td><span class="risk-badge risk-red">Urgente (&lt;24h)</span></td></tr>
               <tr><td>Dúvida sobre indicação de profilaxia EI</td><td>Cardiologista — confirmação formal</td><td><span class="risk-badge risk-gray">Eletivo</span></td></tr>
               <tr><td>INR &gt;4,0 em paciente anticoagulado</td><td>Hematologista ou Cardiologista</td><td><span class="risk-badge risk-orange">Prioritário</span></td></tr>

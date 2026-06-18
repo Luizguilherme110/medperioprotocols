@@ -1041,6 +1041,52 @@ table.data-table--compact td { padding: 0.6rem 0.75rem; white-space: normal; }
   border-top: 1px solid rgba(74,85,104,0.08);
 }
 
+/* --- Carta Modelo --- */
+.carta-modelo {
+  border: 1px solid rgba(74,85,104,0.15);
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #2d3748;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.carta-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--medperio-blue, #2b6cb0);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: -1.5rem -1.75rem 0.5rem;
+}
+.carta-modelo ul {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+.carta-modelo li {
+  margin-bottom: 0.25rem;
+}
+.carta-destaque {
+  color: #c0392b;
+}
+.carta-fechamento {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.carta-assinatura {
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
 /* --- References --- */
 ol.refs {
   counter-reset: ref;
